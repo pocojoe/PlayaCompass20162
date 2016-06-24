@@ -1,11 +1,11 @@
-package com.hoppercodes.PlayaCompass;
+package com.hoppercodes.PlayaPositioningSystem;
 
 /**
  * Created by hexagon on 6/24/16.
  */
-class PlayaNavigate {                // navigate from point here to point there
-    String tnbearbdf;           // string true north bearing in degrees and distance in feet
-    String compassbdf;          // compass bearing, rose string in 45 degree steps - eg NW - and distance in feet, declination corrected.
+public class PlayaNavigate {                // navigate from point here to point there
+    public String tnbearbdf;           // string true north bearing in degrees and distance in feet
+    public String compassbdf;          // compass bearing, rose string in 45 degree steps - eg NW - and distance in feet, declination corrected.
     String rose;                // compass rose abbreviation - eg NW
     double compassBearing;      // the direction to navigate by compass magnetic field
     double trueNorthBearing;    // true north bearing - the direction to navigate (declination corrected)

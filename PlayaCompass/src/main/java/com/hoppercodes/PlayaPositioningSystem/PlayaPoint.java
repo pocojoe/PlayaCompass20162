@@ -1,17 +1,17 @@
-package com.hoppercodes.PlayaCompass;
+package com.hoppercodes.PlayaPositioningSystem;
 
 /**
  * Created by hexagon on 6/24/16.
  */
 // stuff below here should be encapsulated into a class called PlayaDatum.  A datum is "a coordinate system and set of reference points used to locate places on earth".
-class PlayaPoint {  // Playa Point:  a complete position description of a named point within the borders of Black Rock City
+public class PlayaPoint {  // Playa Point:  a complete position description of a named point within the borders of Black Rock City
     // normal notation for speaking a coordinate is time distance, where time is hh:mm and distance is feet.
-    String name;       // name of point: text descriptor of location; eg "Man" or "Artery" or "Center Camp"
-    String address;    // playa address - distance from the man, in feet, followed by time on clock or if in city, interval between streets
-    String latlon;     // latitude and longitude string, formatted to 5 places, with comma separation
-    String mcadmdf;    // string of man clock angle in degrees and man clock distance, feet
-    double lat;        // latitude, degrees and decimal fraction
-    double lon;        // longitude, degrees and azimuth fraction
+    public String name;       // name of point: text descriptor of location; eg "Man" or "Artery" or "Center Camp"
+    public String address;    // playa address - distance from the man, in feet, followed by time on clock or if in city, interval between streets
+    public String latlon;     // latitude and longitude string, formatted to 5 places, with comma separation
+    public String mcadmdf;    // string of man clock angle in degrees and man clock distance, feet
+    public double lat;        // latitude, degrees and decimal fraction
+    public double lon;        // longitude, degrees and azimuth fraction
     double precision;  // estimate of how (in)accurately lat and lon is known-- more likely resolution  (from gps, else 0 if assigned, then lat lon is determined from mdm and mcad)
     double mcad;       // Center of an clock angle, degrees, polar from 12:00 straight "up"
     double mdf;        // man distance, feet

@@ -16,6 +16,11 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hoppercodes.PlayaPositioningSystem.GoldenSpike;
+import com.hoppercodes.PlayaPositioningSystem.PlayaNavigate;
+import com.hoppercodes.PlayaPositioningSystem.PlayaPoint;
+import com.hoppercodes.PlayaPositioningSystem.PlayaPositioningSystem;
+
 public class MainActivity extends Activity {
     private TextView latitude;
     private TextView longitude;

@@ -1,20 +1,20 @@
-package com.hoppercodes.PlayaCompass;
+package com.hoppercodes.PlayaPositioningSystem;
 
 /**
  * Created by hexagon on 6/24/16.
  */
-class GoldenSpike { // the golden spike is the latitude and longitude of the location on the playa where the man is constructed.
+public class GoldenSpike { // the golden spike is the latitude and longitude of the location on the playa where the man is constructed.
     // first three are same as in PlayaPoint - but no precision is associated.
-    String datum;       // name of datum - each year the datum changes with golden spike
-    String latlon;      // latitude longitude string, formatted to 5 decimal places, separated by comma
-    double lat;         // latitude of golden spike
-    double lon;         // longitude of golden spike
-    double tncad;         // true north clock angle, degrees, from golden spike - defines relation between playa clock angle (12:00 reference) and True North
-    double declination; // compass declination from true north
-    double mpdlat;      // meters per degree latitude
-    double mpdlon;      // meters per degree longitude
-    double fpdlat;      // feet per degree latitude
-    double fpdlon;      // feet per degree longitude
+    public String datum;       // name of datum - each year the datum changes with golden spike
+    public String latlon;      // latitude longitude string, formatted to 5 decimal places, separated by comma
+    public double lat;         // latitude of golden spike
+    public double lon;         // longitude of golden spike
+    public double tncad;         // true north clock angle, degrees, from golden spike - defines relation between playa clock angle (12:00 reference) and True North
+    public double declination; // compass declination from true north
+    public double mpdlat;      // meters per degree latitude
+    public double mpdlon;      // meters per degree longitude
+    public double fpdlat;      // feet per degree latitude
+    public double fpdlon;      // feet per degree longitude
 
     private static GoldenSpike instance;
 

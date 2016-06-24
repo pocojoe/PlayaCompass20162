@@ -1,4 +1,4 @@
-package com.hoppercodes.PlayaCompass;
+package com.hoppercodes.PlayaPositioningSystem;
 
 /**
  * Created by hexagon on 6/24/16.
