@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/PlayaCompass.iml" filepath="$PROJECT_DIR$/PlayaCompass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PlayaCompass/playacompass.iml" filepath="$PROJECT_DIR$/PlayaCompass/playacompass.iml" />
+    </modules>
+  </component>
+</project>
