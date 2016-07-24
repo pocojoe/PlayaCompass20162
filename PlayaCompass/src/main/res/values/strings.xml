@@ -5,4 +5,17 @@
     <string name="action_settings">Settings</string>
     <string name="textview">TextView</string>
 
+    <string name="Theme">Da Vinci\'s Workshop</string>
+    <string name="ASstreet">Arno</string>
+    <string name="BStreet">Boticelli</string>
+    <string name="CStreet">Cosimo</string>
+    <string name="DStreet">Donatello</string>
+    <string name="EStreet">Effigiare</string>
+    <string name="FStreet">Florin</string>
+    <string name="GStreet">Guild</string>
+    <string name="HStreet">High Ren</string>
+    <string name="IStreet">Italic</string>
+    <string name="JStreet">Justice</string>
+    <string name="KStreet">Knowledge</string>
+    <string name="LStreet">Lorenzo</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.hoppercodes.PlayaPositioningSystem;
 
+import com.hoppercodes.PlayaCompass.R;
+
 /**
  * Created by hexagon on 6/24/16.
  */
@@ -95,8 +97,8 @@ public class PlayaPoint {  // Playa Point:  a complete position description of a
         uca = (360 - this.mcad) - goldenSpike.tncad;  // convert to unit circle angle for trig functions
         dxf = this.mdf * Math.cos(Math.toRadians(uca));
         dyf = this.mdf * Math.sin(Math.toRadians(uca));
-        this.lat = goldenSpike.lat + dyf / goldenSpike.fpdlat;
-        this.lon = goldenSpike.lon + dxf / goldenSpike.fpdlon;
+        this.lat = goldenSpike.lat + (dyf / goldenSpike.fpdlat);
+        this.lon = goldenSpike.lon + (dxf / goldenSpike.fpdlon);
         this.precision = 0;
         buildAddress();
     }
@@ -175,55 +177,58 @@ public class PlayaPoint {  // Playa Point:  a complete position description of a
             // if (this.mdf < SMDF - 20) street = "Playa";
             if (this.mdf >= SMDF - 20) street = "Esplanade";
             if (this.mdf >= SMDF + 20) street = "Esp-A Block";
-            if (this.mdf >= AMDF - 20) street = "A Street";
+            if (this.mdf >= AMDF - 20) street = "Arno";
             if (this.mdf >= AMDF + 20) street = "A-B Block";
-            if (this.mdf >= BMDF - 20) street = "B Street";
+            if (this.mdf >= BMDF - 20) street = "Botticelli";
             if (this.mdf >= BMDF + 20) street = "B-C Block";
-            if (this.mdf >= CMDF - 20) street = "C Street";
+            if (this.mdf >= CMDF - 20) street = "Cosimo";
             if (this.mdf >= CMDF + 20) street = "C-D Block";
-            if (this.mdf >= DMDF - 20) street = "D Street";
+            if (this.mdf >= DMDF - 20) street = "Donatello";
             if (this.mdf >= DMDF + 20) street = "D-E Block";
-            if (this.mdf >= EMDF - 20) street = "E Street";
+            if (this.mdf >= EMDF - 20) street = "Effigiare";
             if (this.mdf >= EMDF + 20) street = "E-F Block";
-            if (this.mdf >= FMDF - 20) street = "F Street";
+            if (this.mdf >= FMDF - 20) street = "Florin";
             if (this.mdf >= FMDF + 20) street = "F-G Block";
-            if (this.mdf >= GMDF - 20) street = "G Street";
+            if (this.mdf >= GMDF - 20) street = "Guild";
             if (this.mdf >= GMDF + 20) street = "G-H Block";
-            if (this.mdf >= HMDF - 20) street = "H Street";
+            if (this.mdf >= HMDF - 20) street = "High Ren";
             if (this.mdf >= HMDF + 20) street = "H-J Block";
-            if (this.mdf >= JMDF - 20) street = "J Street";
+            if (this.mdf >= JMDF - 20) street = "Justice";
             if (this.mdf >= JMDF + 20) street = "J-K Block";
-            if (this.mdf >= KMDF - 20) street = "K Street";
+            if (this.mdf >= KMDF - 20) street = "Knowledge";
             if (this.mdf >= KMDF + 20) street = "K-L Block";
-            if (this.mdf >= LMDF - 20) street = "L Street";
+            if (this.mdf >= LMDF - 20) street = "Lorenzo";
+            if (this.mdf >= LMDF + 20) street = "Perimeter";
         }
         if (((this.mcad > 75) & (mcad <= 105)) | ((this.mcad > 120) & (this.mcad <= 150)) | ((this.mcad > 210) & (this.mcad <= 240)) | ((this.mcad > 255) & (this.mcad <= 285))) {
             // if (this.mdf < SMDF - 20) street = "Playa";
             if (this.mdf >= SMDF - 20) street = "Esplanade";
             if (this.mdf >= SMDF + 20) street = "Esp-A Block";
-            if (this.mdf >= AMDF - 20) street = "A Street";
+            if (this.mdf >= AMDF - 20) street = "Arno";
             if (this.mdf >= AMDF + 20) street = "A-B Block";
-            if (this.mdf >= BMDF - 20) street = "B Street";
+            if (this.mdf >= BMDF - 20) street = "Botticelli";
             if (this.mdf >= BMDF + 20) street = "B-C Block";
-            if (this.mdf >= CMDF - 20) street = "C Street";
+            if (this.mdf >= CMDF - 20) street = "Cosimo";
             if (this.mdf >= CMDF + 20) street = "C-D Block";
-            if (this.mdf >= DMDF - 20) street = "D Street";
+            if (this.mdf >= DMDF - 20) street = "Donatello";
             if (this.mdf >= DMDF + 20) street = "D-E Block";
-            if (this.mdf >= EMDF - 20) street = "E Street";
+            if (this.mdf >= EMDF - 20) street = "Effigiare";
             if (this.mdf >= EMDF + 20) street = "E-F Block";
-            if (this.mdf >= FMDF - 20) street = "F Street";
+            if (this.mdf >= FMDF - 20) street = "Florin";
             if (this.mdf >= FMDF + 20) street = "F-G Block";
-            if (this.mdf >= GMDF - 20) street = "G Street";
+            if (this.mdf >= GMDF - 20) street = "Guild";
             if (this.mdf >= GMDF + 20) street = "G-H Block";
-            if (this.mdf >= HMDF - 20) street = "H Street";
+            if (this.mdf >= HMDF - 20) street = "High Ren";
             if (this.mdf >= HMDF + 20) street = "H-I Block";
-            if (this.mdf >= IMDF - 20) street = "I Street";
+            if (this.mdf >= IMDF - 20) street = "Italic";
             if (this.mdf >= IMDF + 20) street = "I-J Block";
-            if (this.mdf >= JMDF - 20) street = "J Street";
+            if (this.mdf >= JMDF - 20) street = "Justice";
             if (this.mdf >= JMDF + 20) street = "J-K Block";
-            if (this.mdf >= KMDF - 20) street = "K Street";
+            if (this.mdf >= KMDF - 20) street = "Knowledge";
             if (this.mdf >= KMDF + 20) street = "K-L Block";
-            if (this.mdf >= LMDF - 20) street = "L Street";
+            if (this.mdf >= LMDF - 20) street = "Lorenzo";
+            if (this.mdf >= LMDF + 20) street = "Perimeter";
+
         }
         if (street.length() == 0) {
             this.address = timeangle + " & " + distfeet;

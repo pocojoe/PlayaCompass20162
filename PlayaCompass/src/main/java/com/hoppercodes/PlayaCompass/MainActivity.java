@@ -198,10 +198,10 @@ public class MainActivity extends Activity implements SensorEventListener {
         TextView navigation = (TextView) findViewById(R.id.navigation);
         navigation.setText("Navigation");
         TextView navtnbearingdist = (TextView) findViewById(R.id.navTNBearingDist);
-        navtnbearingdist.setText(String.valueOf(hereToThere.tnbearbdf));
+        navtnbearingdist.setText(String.valueOf(hereToThere.navDegNDist));
         TextView navdistfeet = (TextView) findViewById(R.id.navTNBearingDist);
-        navdistfeet.setText(String.valueOf(hereToThere.tnbearbdf));
-        TextView navbeardf = (TextView) findViewById(R.id.navCompassBearingDist);
-        navbeardf.setText("Compass Bearing: " + String.valueOf(hereToThere.compassbdf));
+        navdistfeet.setText(String.valueOf(hereToThere.navRoseDist));
+        TextView navbeardf = (TextView) findViewById(R.id.navCompassBearing);
+        navbeardf.setText("North Bearing: " + String.valueOf(hereToThere.navDegNDist));
     }
 }

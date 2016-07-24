@@ -8,7 +8,9 @@ public final class PlayaPositioningSystem {
     GoldenSpike gs; // GoldenSpike(40.7864, -119.20065, 315.0, "GS 2016");
     PlayaHeading heading = new PlayaHeading(0f);
     PlayaPoint here = new PlayaPoint(40.7864, -119.2065, 10.0, "GS 2016");
-    PlayaPoint there = new PlayaPoint(40.7864, -119.2065, 10.0, "GS 2016");
+    // PlayaPoint there = new PlayaPoint(40.7864, -119.2065, 10.0, "GS 2016");
+    PlayaPoint there = new PlayaPoint(32.250018, -110.944092, 10.0, "Bookmans");
+
     private static PlayaPositioningSystem instance;
 
     public static synchronized PlayaPositioningSystem getInstance(){
