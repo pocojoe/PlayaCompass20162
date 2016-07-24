@@ -13,9 +13,73 @@ public class PlayaHeading {
     public String roseWind;
     public String roseHeading;
     GoldenSpike goldenSpike = GoldenSpike.getInstance();        // need this for declination of golden spike
+    static int rbi = 0;      // ring buffer index
+    static int rSize = 16;     // size of ring buffer
+    static int rDiv = 0;        // ring divisor; builds to ring size with repeated calls
+    static double azValSin[] = new double[rSize];
+    static double azValCos[] = new double[rSize];
+    static double oldSin = 0f;
+    static double oldCos = 0f;
+    static double sumSin = 0f;
+    static double sumCos = 0f;
+
+
+    static {
+        rbi = 0;      // ring buffer index
+        rDiv = 0;
+        oldSin = 0f;
+        oldCos = 0f;
+        sumSin = 0f;
+        sumCos = 0f;
+    }
+
 
     public PlayaHeading(double azimuth) {
-        this.headingM = AverageAzimuth(azimuth);  // provides average of last 16 samples
+/*
+        this.headingM = AverageAzimuth(300f);
+        this.headingM = AverageAzimuth(310f);
+        this.headingM = AverageAzimuth(320f);
+        this.headingM = AverageAzimuth(330f);
+        this.headingM = AverageAzimuth(340f);
+        this.headingM = AverageAzimuth(350f);
+        this.headingM = AverageAzimuth(0f);
+        this.headingM = AverageAzimuth(10f);
+        this.headingM = AverageAzimuth(20f);
+        this.headingM = AverageAzimuth(30f);
+        this.headingM = AverageAzimuth(40f);
+        this.headingM = AverageAzimuth(50f);
+        this.headingM = AverageAzimuth(60f);
+        this.headingM = AverageAzimuth(70f);
+        this.headingM = AverageAzimuth(80f);
+        this.headingM = AverageAzimuth(90f);
+        this.headingM = AverageAzimuth(100f);
+        this.headingM = AverageAzimuth(110f);
+        this.headingM = AverageAzimuth(120f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+        this.headingM = AverageAzimuth(130f);
+
+*/
+
+        this.headingM = AverageAzimuth(azimuth);  // provides running average samples
         this.headingN = (((this.headingM - goldenSpike.declination) + 360.0) % 360.0);
         this.roseDeg = (int) this.headingM;  // the rose reports magnetic compass heading since that is what should agree with compass if hand-held
         roseError = 180 - Math.abs((Math.abs(this.roseInt - this.roseDeg) - 180));
@@ -121,42 +185,40 @@ public class PlayaHeading {
         }
     }
 
-    double AverageAzimuth(double azIn)     // compute the average of N compass readings and give the rolling average
+    double AverageAzimuth(double azInDegrees)     // compute the average of N compass readings and give the rolling average
     {
-        int r = 0;      // ring buffer index
-        int rSize=16;
-        int ndiv = 0;
-        double azVal[] = new double[rSize];
-        double ra;      //angle in radians
+        int rSize = 16;           // number of samples in running average
+        double azInRadians;      //angle in radians
         double newSin = 0f;
         double newCos = 0f;
-        double oldSin = 0f;
-        double oldCos = 0f;
-        double sumSin = 0f;
-        double sumCos = 0f;
         double mSin = 0f;
         double mCos = 0f;
         double mAvg = 0f;
 
-        if (ndiv >= rSize) {
-            ra = Math.toRadians(azVal[r]);    // out with the old
-            oldSin = Math.sin(ra);
-            oldCos = Math.cos(ra);
-            ndiv = rSize;                      // ndiv gets capped at 16
+        if (rDiv >= rSize) {
+           // azInRadians = azVal[rbi];    // out with the old, already in radians
+           // oldSin = Math.sin(azInRadians);
+            //oldCos = Math.cos(azInRadians);
+            oldSin=azValSin[rbi];
+            oldCos=azValCos[rbi];
+            rDiv = rSize;                      // rDiv gets capped at ring size
         } else {
-            ndiv += 1;
+            oldSin = 0;
+            oldCos = 0;
+            rDiv += 1;
         }
-        ra = Math.toRadians(azIn);            // and in with the new
-        azVal[r] = ra;
-        r=(r+1)%rSize;                         // ring around the rose (ie)
-        newSin = Math.sin(ra);
-        newCos = Math.cos(ra);
+        azInRadians = Math.toRadians(azInDegrees);            // and in with the new
+        newSin = Math.sin(azInRadians);
+        newCos = Math.cos(azInRadians);
+        azValSin[rbi] = newSin;
+        azValCos[rbi] = newCos;
+        rbi = (rbi + 1) % rSize;                         // ring around the rose (ie)
         sumSin = sumSin - oldSin + newSin;
         sumCos = sumCos - oldCos + newCos;
-        mSin = sumSin / ndiv;
-        mCos = sumCos / ndiv;
+        mSin = sumSin / rDiv;
+        mCos = sumCos / rDiv;
         mAvg = Math.toDegrees(Math.atan2(mSin, mCos));  // see averaging circular quantities
-        mAvg=(mAvg+360f)%360f;
+        mAvg = (mAvg + 360f) % 360f;
         return mAvg;
     }
 }

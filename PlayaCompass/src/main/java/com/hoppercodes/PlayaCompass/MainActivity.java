@@ -32,6 +32,14 @@ public class MainActivity extends Activity implements SensorEventListener {
     private PPSLocationListener ppsListener;
     private PlayaPositioningSystem playaPositioningSystem;
 
+    float[] lastAccelerometer = new float[3];
+    float[] lastMagnetometer = new float[3];
+    boolean lastAccelerometerSet = false;
+    boolean lastMagnetometerSet = false;
+    float[] mR = new float[9];
+    float[] mOrientation = new float[3];
+
+
     /**
      * Called when the activity is first created.
      */
@@ -85,13 +93,14 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+        /*
         float[] lastAccelerometer = new float[3];
         float[] lastMagnetometer = new float[3];
         boolean lastAccelerometerSet = false;
         boolean lastMagnetometerSet = false;
         float[] mR = new float[9];
         float[] mOrientation = new float[3];
-
+*/
         if (event.sensor == ppsAccelerometer) {
             System.arraycopy(event.values, 0, lastAccelerometer, 0, event.values.length);
             lastAccelerometerSet = true;
