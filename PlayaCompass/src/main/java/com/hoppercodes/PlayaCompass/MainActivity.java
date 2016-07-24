@@ -1,4 +1,12 @@
 package com.hoppercodes.PlayaCompass;
+// playa positioning system
+// Joe Miller
+// Dave Aslanian
+// don't blame Dave, it's Joe's fault
+// first refactor 6/24/16
+// prototype in processing / ketai for about a month to get design down; Processing incredibly nasty with persistent data
+// 7/22/2016 - Sensors integrated, initialization routines; glad to be back in Android Studio learning Java
+// 7/24/2016
 
 import android.app.Activity;
 import android.content.Context;

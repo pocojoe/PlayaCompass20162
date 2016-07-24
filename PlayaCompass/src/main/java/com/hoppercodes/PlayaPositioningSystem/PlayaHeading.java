@@ -1,8 +1,5 @@
 package com.hoppercodes.PlayaPositioningSystem;
 
-/**
- * Created by jmiller on 7/23/2016.
- */
 public class PlayaHeading {
     public double headingN;   // true north heading
     public double headingM;   // magnetic north heading
@@ -35,49 +32,6 @@ public class PlayaHeading {
 
 
     public PlayaHeading(double azimuth) {
-/*
-        this.headingM = AverageAzimuth(300f);
-        this.headingM = AverageAzimuth(310f);
-        this.headingM = AverageAzimuth(320f);
-        this.headingM = AverageAzimuth(330f);
-        this.headingM = AverageAzimuth(340f);
-        this.headingM = AverageAzimuth(350f);
-        this.headingM = AverageAzimuth(0f);
-        this.headingM = AverageAzimuth(10f);
-        this.headingM = AverageAzimuth(20f);
-        this.headingM = AverageAzimuth(30f);
-        this.headingM = AverageAzimuth(40f);
-        this.headingM = AverageAzimuth(50f);
-        this.headingM = AverageAzimuth(60f);
-        this.headingM = AverageAzimuth(70f);
-        this.headingM = AverageAzimuth(80f);
-        this.headingM = AverageAzimuth(90f);
-        this.headingM = AverageAzimuth(100f);
-        this.headingM = AverageAzimuth(110f);
-        this.headingM = AverageAzimuth(120f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-        this.headingM = AverageAzimuth(130f);
-
-*/
 
         this.headingM = AverageAzimuth(azimuth);  // provides running average samples
         this.headingN = (((this.headingM - goldenSpike.declination) + 360.0) % 360.0);
@@ -196,10 +150,7 @@ public class PlayaHeading {
         double mAvg = 0f;
 
         if (rDiv >= rSize) {
-           // azInRadians = azVal[rbi];    // out with the old, already in radians
-           // oldSin = Math.sin(azInRadians);
-            //oldCos = Math.cos(azInRadians);
-            oldSin=azValSin[rbi];
+             oldSin=azValSin[rbi];
             oldCos=azValCos[rbi];
             rDiv = rSize;                      // rDiv gets capped at ring size
         } else {
