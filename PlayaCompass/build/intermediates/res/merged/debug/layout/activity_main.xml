@@ -4,12 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <TextView
         android:id="@+id/gsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/gpsAcc"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:text="gsName"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -22,7 +22,6 @@
         android:layout_below="@+id/gsName"
         android:text="gsLatLon"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
 
     <TextView
         android:id="@+id/hereName"
@@ -106,26 +105,44 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/Compass"
+        android:id="@+id/Rose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/thereAddress"
-        android:text="Compass Heading"
+        android:text="Compass Rose"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-
     <TextView
-        android:id="@+id/CompassMag"
+        android:id="@+id/RoseDeg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/Compass"
-        android:text="headingMag"
+        android:layout_below="@+id/Rose"
+        android:text="roseDeg"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <TextView
+        android:id="@+id/RoseHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/RoseDeg"
+        android:text="roseHeading"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/RoseWind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/RoseHeading"
+        android:text="roseWind"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/navigation"
@@ -133,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/CompassMag"
+        android:layout_below="@+id/RoseWind"
         android:text="Navigation"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 

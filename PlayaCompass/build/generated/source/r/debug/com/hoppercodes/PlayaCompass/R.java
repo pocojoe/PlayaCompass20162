@@ -19,23 +19,24 @@ public final class R {
         public static final int pc512=0x7f020001;
     }
     public static final class id {
-        public static final int Compass=0x7f08000b;
-        public static final int CompassMag=0x7f08000c;
-        public static final int action_settings=0x7f080010;
-        public static final int gpsAcc=0x7f080001;
-        public static final int gsLatLon=0x7f080002;
+        public static final int Rose=0x7f08000a;
+        public static final int RoseDeg=0x7f08000b;
+        public static final int RoseHeading=0x7f08000c;
+        public static final int RoseWind=0x7f08000d;
+        public static final int action_settings=0x7f080011;
+        public static final int gsLatLon=0x7f080001;
         public static final int gsName=0x7f080000;
-        public static final int hereAddress=0x7f080006;
-        public static final int hereLatLon=0x7f080004;
-        public static final int hereName=0x7f080003;
-        public static final int heremcadmdf=0x7f080005;
-        public static final int navCompassBearingDist=0x7f08000f;
-        public static final int navTNBearingDist=0x7f08000e;
-        public static final int navigation=0x7f08000d;
-        public static final int thereAddress=0x7f08000a;
-        public static final int thereLatLon=0x7f080008;
-        public static final int thereName=0x7f080007;
-        public static final int theremcadmdf=0x7f080009;
+        public static final int hereAddress=0x7f080005;
+        public static final int hereLatLon=0x7f080003;
+        public static final int hereName=0x7f080002;
+        public static final int heremcadmdf=0x7f080004;
+        public static final int navCompassBearingDist=0x7f080010;
+        public static final int navTNBearingDist=0x7f08000f;
+        public static final int navigation=0x7f08000e;
+        public static final int thereAddress=0x7f080009;
+        public static final int thereLatLon=0x7f080007;
+        public static final int thereName=0x7f080006;
+        public static final int theremcadmdf=0x7f080008;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

@@ -51,6 +51,7 @@ public class MainActivity extends Activity implements SensorEventListener {
      */
 
     // http://www.techrepublic.com/article/pro-tip-create-your-own-magnetic-compass-using-androids-internal-sensors/
+    // http://www.ymc.ch/en/smooth-true-north-compass-values  nice discussion of smoothing.
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,18 +122,14 @@ public class MainActivity extends Activity implements SensorEventListener {
     }
 
     private class MyLocationListener implements LocationListener {
-
         @Override
         public void onLocationChanged(Location location) {
             PlayaPoint updatedHere = new PlayaPoint(location.getLatitude(), location.getLongitude(), location.getAccuracy(), location.getProvider());
-
             playaPositioningSystem.setHere(updatedHere);
-
-            Toast.makeText(MainActivity.this, "Location changed!",
+            Toast.makeText(MainActivity.this, "GPS Update",
                     Toast.LENGTH_SHORT).show();
             PlayaDisplayBasics();
         }
-
 
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -144,7 +141,6 @@ public class MainActivity extends Activity implements SensorEventListener {
         public void onProviderEnabled(String provider) {
             Toast.makeText(MainActivity.this, "Provider " + provider + " enabled!",
                     Toast.LENGTH_SHORT).show();
-
         }
 
         @Override
@@ -189,10 +185,14 @@ public class MainActivity extends Activity implements SensorEventListener {
         thereaddress.setText(there.address);    // can increase precision if desired
 
         // electronic compass  uses accelerometer and magnetic field sensors
-        TextView Compass = (TextView) findViewById(R.id.Compass);
-        Compass.setText("Compass Heading (Direction Faced)");
-        TextView CompassMag = (TextView) findViewById(R.id.CompassMag);
-        CompassMag.setText(heading.roseWind);
+        TextView Rose = (TextView) findViewById(R.id.Rose);
+        Rose.setText("Compass Rose");
+        TextView RoseInt = (TextView) findViewById(R.id.RoseDeg);
+        RoseInt.setText(String.format("%03d",heading.roseDeg));
+        TextView RoseHeading = (TextView) findViewById(R.id.RoseHeading);
+        RoseHeading.setText(String.valueOf(heading.roseHeading));
+        TextView RoseWind = (TextView) findViewById(R.id.RoseWind);
+        RoseWind.setText(String.valueOf(heading.roseWind));
 
         // navigation route
         TextView navigation = (TextView) findViewById(R.id.navigation);
