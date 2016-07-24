@@ -21,7 +21,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +39,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     private PPSLocationListener ppsListener;
     private PlayaPositioningSystem playaPositioningSystem;
 
+    // these need to be persistent, when I moved them within onSensorChanged things quit working
     float[] lastAccelerometer = new float[3];
     float[] lastMagnetometer = new float[3];
     boolean lastAccelerometerSet = false;
@@ -102,13 +102,14 @@ public class MainActivity extends Activity implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         /*
+        these did not work to be declared here
         float[] lastAccelerometer = new float[3];
         float[] lastMagnetometer = new float[3];
         boolean lastAccelerometerSet = false;
         boolean lastMagnetometerSet = false;
         float[] mR = new float[9];
         float[] mOrientation = new float[3];
-*/
+        */
         if (event.sensor == ppsAccelerometer) {
             System.arraycopy(event.values, 0, lastAccelerometer, 0, event.values.length);
             lastAccelerometerSet = true;
@@ -144,13 +145,13 @@ public class MainActivity extends Activity implements SensorEventListener {
 
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
-            Toast.makeText(MainActivity.this, provider + "'s status changed to " + status + "!",
+            Toast.makeText(MainActivity.this, provider + "'s status changed to " + status,
                     Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onProviderEnabled(String provider) {
-            Toast.makeText(MainActivity.this, "Provider " + provider + " enabled!",
+            Toast.makeText(MainActivity.this, "Provider " + provider + " enabled",
                     Toast.LENGTH_SHORT).show();
         }
 
@@ -199,7 +200,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         TextView Rose = (TextView) findViewById(R.id.Rose);
         Rose.setText("Compass Rose");
         TextView RoseInt = (TextView) findViewById(R.id.RoseDeg);
-        RoseInt.setText(String.format("%03d",heading.roseDeg));
+        RoseInt.setText(String.format("%03d", heading.roseDeg));
         TextView RoseHeading = (TextView) findViewById(R.id.RoseHeading);
         RoseHeading.setText(String.valueOf(heading.roseHeading));
         TextView RoseWind = (TextView) findViewById(R.id.RoseWind);
