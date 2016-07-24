@@ -23,7 +23,8 @@ public final class R {
         public static final int RoseDeg=0x7f08000b;
         public static final int RoseHeading=0x7f08000c;
         public static final int RoseWind=0x7f08000d;
-        public static final int action_settings=0x7f080011;
+        public static final int action_settings=0x7f080012;
+        public static final int button=0x7f080011;
         public static final int gsLatLon=0x7f080001;
         public static final int gsName=0x7f080000;
         public static final int hereAddress=0x7f080005;

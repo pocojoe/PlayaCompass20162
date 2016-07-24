@@ -14,7 +14,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,25 +24,12 @@ import com.hoppercodes.PlayaPositioningSystem.PlayaPoint;
 import com.hoppercodes.PlayaPositioningSystem.PlayaPositioningSystem;
 
 public class MainActivity extends Activity implements SensorEventListener {
-    private TextView latitude;
-    private TextView longitude;
-    private TextView choice;
-    private CheckBox fineAcc;
-    private Button choose;
-    private TextView provText;
-    private LocationManager locationManager;
-    private SensorManager sensorManager;
-    private Sensor accelerometer;
-    private Sensor magnetometer;
-    private float[] lastAccelerometer = new float[3];
-    private float[] lastMagnetometer = new float[3];
-    private boolean lastAccelerometerSet = false;
-    private boolean lastMagnetometerSet = false;
-    private float[] mR = new float[9];
-    private float[] mOrientation = new float[3];
-    private String provider;
-    private MyLocationListener mylistener;
-    private Criteria criteria;
+    private LocationManager ppsLocationManager;
+    private SensorManager ppsSensorManager;
+    private Sensor ppsAccelerometer;
+    private Sensor ppsMagnetometer;
+    private String ppsProvider;
+    private PPSLocationListener ppsListener;
     private PlayaPositioningSystem playaPositioningSystem;
 
     /**
@@ -57,19 +43,20 @@ public class MainActivity extends Activity implements SensorEventListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         playaPositioningSystem = PlayaPositioningSystem.getInstance();
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        ppsLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        ppsSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        ppsAccelerometer = ppsSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        ppsMagnetometer = ppsSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        Criteria criteria;
 
         criteria = new Criteria();
         criteria.setAccuracy(Criteria.ACCURACY_FINE);
         criteria.setCostAllowed(false);
-        provider = locationManager.getBestProvider(criteria, false);
-        Location location = locationManager.getLastKnownLocation(provider);
-        mylistener = new MyLocationListener();
+        ppsProvider = ppsLocationManager.getBestProvider(criteria, false);
+        Location location = ppsLocationManager.getLastKnownLocation(ppsProvider);
+        ppsListener = new PPSLocationListener();
         if (location != null) {
-            mylistener.onLocationChanged(location);
+            ppsListener.onLocationChanged(location);
         } else {
             // leads to the settings because there is no last known location
             Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
@@ -77,31 +64,38 @@ public class MainActivity extends Activity implements SensorEventListener {
             // TO DO
             // need something here saying be patient, waiting for GPS
         }
-        locationManager.requestLocationUpdates(provider, 200, 1, mylistener);
+        ppsLocationManager.requestLocationUpdates(ppsProvider, 200, 1, ppsListener);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        locationManager.requestLocationUpdates(provider, 200, 1, mylistener);
-        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-        sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_NORMAL);
+        ppsLocationManager.requestLocationUpdates(ppsProvider, 200, 1, ppsListener);
+        ppsSensorManager.registerListener(this, ppsAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        ppsSensorManager.registerListener(this, ppsMagnetometer, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        locationManager.removeUpdates(mylistener);
-        sensorManager.unregisterListener(this, accelerometer);
-        sensorManager.unregisterListener(this, magnetometer);
+        ppsLocationManager.removeUpdates(ppsListener);
+        ppsSensorManager.unregisterListener(this, ppsAccelerometer);
+        ppsSensorManager.unregisterListener(this, ppsMagnetometer);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (event.sensor == accelerometer) {
+        float[] lastAccelerometer = new float[3];
+        float[] lastMagnetometer = new float[3];
+        boolean lastAccelerometerSet = false;
+        boolean lastMagnetometerSet = false;
+        float[] mR = new float[9];
+        float[] mOrientation = new float[3];
+
+        if (event.sensor == ppsAccelerometer) {
             System.arraycopy(event.values, 0, lastAccelerometer, 0, event.values.length);
             lastAccelerometerSet = true;
-        } else if (event.sensor == magnetometer) {
+        } else if (event.sensor == ppsMagnetometer) {
             System.arraycopy(event.values, 0, lastMagnetometer, 0, event.values.length);
             lastMagnetometerSet = true;
         }
@@ -121,7 +115,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         // TODO Auto-generated method stub
     }
 
-    private class MyLocationListener implements LocationListener {
+    private class PPSLocationListener implements LocationListener {
         @Override
         public void onLocationChanged(Location location) {
             PlayaPoint updatedHere = new PlayaPoint(location.getLatitude(), location.getLongitude(), location.getAccuracy(), location.getProvider());
@@ -184,7 +178,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         TextView thereaddress = (TextView) findViewById(R.id.thereAddress);
         thereaddress.setText(there.address);    // can increase precision if desired
 
-        // electronic compass  uses accelerometer and magnetic field sensors
+        // electronic compass  uses ppsAccelerometer and magnetic field sensors
         TextView Rose = (TextView) findViewById(R.id.Rose);
         Rose.setText("Compass Rose");
         TextView RoseInt = (TextView) findViewById(R.id.RoseDeg);
