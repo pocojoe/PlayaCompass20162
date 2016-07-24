@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PlayaCompass.iml" filepath="$PROJECT_DIR$/PlayaCompass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PlayaCompass20162.iml" filepath="$PROJECT_DIR$/PlayaCompass20162.iml" />
       <module fileurl="file://$PROJECT_DIR$/PlayaCompass/playacompass.iml" filepath="$PROJECT_DIR$/PlayaCompass/playacompass.iml" />
     </modules>
   </component>

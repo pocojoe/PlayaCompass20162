@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\proj\\PlayaCompass\\PlayaCompass\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
+        "outputFile": "C:\\proj\\PlayaCompass20162\\PlayaCompass\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 108
                 },
                 "from": {
-                    "file": "C:\\proj\\PlayaCompass\\PlayaCompass\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\proj\\PlayaCompass20162\\PlayaCompass\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 164
                 },
                 "from": {
-                    "file": "C:\\proj\\PlayaCompass\\PlayaCompass\\src\\main\\res\\values\\dimens.xml",
+                    "file": "C:\\proj\\PlayaCompass20162\\PlayaCompass\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -49,13 +49,13 @@
                     "endOffset": 217
                 },
                 "from": {
-                    "file": "C:\\proj\\PlayaCompass\\PlayaCompass\\src\\main\\res\\values\\strings.xml",
+                    "file": "C:\\proj\\PlayaCompass20162\\PlayaCompass\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 117,
+                        "startOffset": 110,
                         "endColumn": 52,
-                        "endOffset": 165
+                        "endOffset": 158
                     }
                 }
             },
@@ -64,17 +64,17 @@
                     "startLine": 5,
                     "startColumn": 4,
                     "startOffset": 222,
-                    "endColumn": 56,
-                    "endOffset": 274
+                    "endColumn": 49,
+                    "endOffset": 267
                 },
                 "from": {
-                    "file": "C:\\proj\\PlayaCompass\\PlayaCompass\\src\\main\\res\\values\\strings.xml",
+                    "file": "C:\\proj\\PlayaCompass20162\\PlayaCompass\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
                         "startOffset": 59,
-                        "endColumn": 56,
-                        "endOffset": 111
+                        "endColumn": 49,
+                        "endOffset": 104
                     }
                 }
             },
@@ -82,18 +82,18 @@
                 "to": {
                     "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 279,
-                    "endColumn": 98,
-                    "endOffset": 373
+                    "startOffset": 272,
+                    "endColumn": 45,
+                    "endOffset": 313
                 },
                 "from": {
-                    "file": "C:\\proj\\PlayaCompass\\PlayaCompass\\src\\main\\res\\values\\strings.xml",
+                    "file": "C:\\proj\\PlayaCompass20162\\PlayaCompass\\src\\main\\res\\values\\strings.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 272,
-                        "endColumn": 98,
-                        "endOffset": 366
+                        "startOffset": 164,
+                        "endColumn": 45,
+                        "endOffset": 205
                     }
                 }
             },
@@ -101,79 +101,41 @@
                 "to": {
                     "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 378,
-                    "endColumn": 52,
-                    "endOffset": 426
-                },
-                "from": {
-                    "file": "C:\\proj\\PlayaCompass\\PlayaCompass\\src\\main\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 171,
-                        "endColumn": 52,
-                        "endOffset": 219
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 431,
-                    "endColumn": 45,
-                    "endOffset": 472
-                },
-                "from": {
-                    "file": "C:\\proj\\PlayaCompass\\PlayaCompass\\src\\main\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 225,
-                        "endColumn": 45,
-                        "endOffset": 266
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 9,
-                    "startColumn": 4,
-                    "startOffset": 477,
-                    "endLine": 15,
+                    "startOffset": 318,
+                    "endLine": 13,
                     "endColumn": 12,
-                    "endOffset": 763
+                    "endOffset": 604
                 },
                 "from": {
-                    "file": "C:\\proj\\PlayaCompass\\PlayaCompass\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\proj\\PlayaCompass20162\\PlayaCompass\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 191,
+                        "startOffset": 192,
                         "endLine": 12,
                         "endColumn": 12,
-                        "endOffset": 481
+                        "endOffset": 484
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 16,
+                    "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 768,
-                    "endLine": 18,
+                    "startOffset": 609,
+                    "endLine": 16,
                     "endColumn": 12,
-                    "endOffset": 923
+                    "endOffset": 764
                 },
                 "from": {
-                    "file": "C:\\proj\\PlayaCompass\\PlayaCompass\\src\\main\\res\\values\\styles.xml",
+                    "file": "C:\\proj\\PlayaCompass20162\\PlayaCompass\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 522,
+                        "startOffset": 525,
                         "endLine": 17,
                         "endColumn": 12,
-                        "endOffset": 679
+                        "endOffset": 682
                     }
                 }
             }

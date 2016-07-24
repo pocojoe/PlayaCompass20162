@@ -1,8 +1,5 @@
 package com.hoppercodes.PlayaPositioningSystem;
 
-/**
- * Created by hexagon on 6/24/16.
- */
 public class PlayaNavigate {                // navigate from point here to point there
     public String tnbearbdf;           // string true north bearing in degrees and distance in feet
     public String compassbdf;          // compass bearing, rose string in 45 degree steps - eg NW - and distance in feet, declination corrected.
@@ -26,6 +23,7 @@ public class PlayaNavigate {                // navigate from point here to point
         GoldenSpike gs = playaPositioningSystem.getGs();
         PlayaPoint here = playaPositioningSystem.getHere();
         PlayaPoint there = playaPositioningSystem.getThere();
+        PlayaHeading heading = playaPositioningSystem.getHeading();  // heading is the direction one is currently facing; bearing is the direction to there from here
 
         // get compass heading from sensor module in handset
         this.compassHeading = 999;

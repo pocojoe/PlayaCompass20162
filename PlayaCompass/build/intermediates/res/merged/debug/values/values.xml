@@ -3,9 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <string name="action_settings">Settings</string>
-    <string name="app_name">PlayaCompass 2016.1</string>
-    <string name="do_you_want_a_fine_accuracy_or_not">Do you want a fine accuracy or not?</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">PlayaCompass</string>
     <string name="textview">TextView</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--

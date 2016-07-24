@@ -1,234 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
-
-         <TextView
-                android:id="@+id/textView"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="@string/do_you_want_a_fine_accuracy_or_not" />
-
-         <TextView
-                android:id="@+id/choice"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView"
-                android:text="coarse accuracy selected (default)" />
-
-         <CheckBox
-             android:id="@+id/fineAccuracy"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="fine accuracy"
-             android:layout_below="@id/choice"
-             android:checked="false" />
-
-         <Button
-             android:id="@+id/chooseRadio"
-             style="?android:attr/buttonStyleSmall"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_below="@id/fineAccuracy"
-             android:text="OK" />
-
-          <TextView
-                android:id="@+id/prov"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="No provider selected yet"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/chooseRadio"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/lat"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Latitude: -"
-                android:layout_below="@id/prov"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/lon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Longitude: -"
-                android:layout_below="@id/lat"
-                android:textSize="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="gpsUpdateTIme"
-                android:id="@+id/gpsUpdateTime"
-                android:layout_below="@+id/lon"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="gpsLat"
-                android:id="@+id/gpsLat"
-                android:layout_below="@+id/gpsUpdateTime"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="gpsLon"
-                android:id="@+id/gpsLon"
-                android:layout_below="@+id/gpsLat"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="gpsAcc"
-                android:id="@+id/gpsAcc"
-                android:layout_below="@+id/gpsLon" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="gsName"
-                android:layout_below="@+id/gpsAcc"
-                android:id="@+id/gsName" />
+    <TextView
+        android:id="@+id/gsName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gpsAcc"
+        android:text="gsName"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="gsLatLon"
-                android:id="@+id/gsLatLon"
-                android:layout_below="@+id/gsName"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="hereName"
-                android:id="@+id/hereName"
-                android:layout_below="@+id/gsLatLon"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="hereLatLon"
-                android:id="@+id/hereLatLon"
-                android:layout_below="@+id/hereName"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="hereMcadMdf"
-                android:id="@+id/heremcadmdf"
-                android:layout_below="@+id/hereLatLon"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/gsLatLon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/gsName"
+        android:text="gsLatLon"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="hereAddress"
-                android:id="@+id/hereAddress"
-                android:layout_below="@+id/heremcadmdf"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/hereName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/gsLatLon"
+        android:text="hereName"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="thereName"
-                android:id="@+id/thereName"
-                android:layout_below="@+id/hereAddress"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+    <TextView
+        android:id="@+id/hereLatLon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/hereName"
+        android:text="hereLatLon"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="thereLatLon"
-                android:id="@+id/thereLatLon"
-                android:layout_below="@+id/thereName"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="thereMcadMdf"
-                android:id="@+id/theremcadmdf"
-                android:layout_below="@+id/thereLatLon"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="thereAddress"
-                android:id="@+id/thereAddress"
-                android:layout_below="@+id/theremcadmdf"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Navigation"
-                android:id="@+id/navigation"
-                android:layout_below="@+id/thereAddress"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="navTNBearingDist"
-                android:id="@+id/navTNBearingDist"
-                android:layout_below="@+id/navigation"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/heremcadmdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/hereLatLon"
+        android:text="hereMcadMdf"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="navCompassBearingDist"
-                android:id="@+id/navCompassBearingDist"
-                android:layout_below="@+id/navTNBearingDist"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/hereAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/heremcadmdf"
+        android:text="hereAddress"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/thereName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/hereAddress"
+        android:text="thereName"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/thereLatLon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/thereName"
+        android:text="thereLatLon"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/theremcadmdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/thereLatLon"
+        android:text="thereMcadMdf"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/thereAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/theremcadmdf"
+        android:text="thereAddress"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/Compass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/thereAddress"
+        android:text="Compass Heading"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
+    <TextView
+        android:id="@+id/CompassMag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Compass"
+        android:text="headingMag"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
-        </RelativeLayout>
+    <TextView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/CompassMag"
+        android:text="Navigation"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/navTNBearingDist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/navigation"
+        android:text="navTNBearingDist"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+    <TextView
+        android:id="@+id/navCompassBearingDist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/navTNBearingDist"
+        android:text="navCompassBearingDist"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+</RelativeLayout>
