@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clickable="true">
+
+    <Button
+        android:id="@+id/markLocationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:enabled="true"
+        android:onClick="markButtonClicked"
+        android:text="Mark Location"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:focusable="false"
+        android:longClickable="false" />
 
     <TextView
         android:id="@+id/gsName"
@@ -10,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/markLocationButton"
         android:text="gsName"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -155,37 +170,34 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/navTNBearingDist"
+        android:id="@+id/navMagBearing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/navigation"
-        android:text="navTNBearingDist"
+        android:text="navMagBearing"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
     <TextView
-        android:id="@+id/navCompassBearing"
+        android:id="@+id/navNorthBearing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/navTNBearingDist"
-        android:text="navCompassBearing"
+        android:layout_below="@+id/navMagBearing"
+        android:text="navNorthBearing"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
+    <TextView
+        android:id="@+id/navDistFeet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mark Location"
-        android:id="@+id/markLocationButton"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:clickable="true"
-        android:onClick="markHereLocation"
-        android:enabled="true" />
+        android:layout_below="@+id/navNorthBearing"
+        android:text="navDistFeet"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-
-</RelativeLayout>
+</LinearLayout>
