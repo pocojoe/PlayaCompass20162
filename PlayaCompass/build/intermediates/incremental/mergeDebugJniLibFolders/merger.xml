@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="C:\proj\PlayaCompass20162\PlayaCompass\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="C:\proj\PlayaCompass20162\PlayaCompass\src\debug\jniLibs"/></dataSet></merger>

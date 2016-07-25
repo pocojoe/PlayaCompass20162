@@ -21,6 +21,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -216,4 +218,9 @@ public class MainActivity extends Activity implements SensorEventListener {
         TextView navdistfeet = (TextView) findViewById(R.id.navDistFeet);
         navdistfeet.setText("Nav Distance (FT): " + String.format("%6.0f", hereToThere.navdf));
     }
+
+    void MarkButtonClicked(View v) {
+        Log.i("info", "MarkButtonClicked");
+    }
 }
+
