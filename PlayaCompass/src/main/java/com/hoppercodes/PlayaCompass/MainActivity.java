@@ -21,11 +21,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.util.Log;
 
 import com.hoppercodes.PlayaPositioningSystem.GoldenSpike;
 import com.hoppercodes.PlayaPositioningSystem.PlayaHeading;
@@ -34,26 +31,6 @@ import com.hoppercodes.PlayaPositioningSystem.PlayaPoint;
 import com.hoppercodes.PlayaPositioningSystem.PlayaPositioningSystem;
 
 public class MainActivity extends Activity implements SensorEventListener {
-    TextView tvGSName;
-    TextView tvGSLatLon;
-    TextView tvHereName;
-    TextView tvHereLatLon;
-    TextView tvHereMcadmdf;
-    TextView tvHereAddress;
-    TextView tvThereName;
-    TextView tvThereLatLon;
-    TextView tvThereMcadmdf;
-    TextView tvRose;
-    TextView tvThereAddress;
-    TextView tvRoseInt;
-    TextView tvRoseHeading;
-    TextView tvRoseWind;
-    TextView tvNavigation;
-    TextView tvNavNBearing;
-    TextView tvNavMBearing;
-    TextView tvNavDistFeet;
-    Button   markLocationButton;
-
     private LocationManager ppsLocationManager;
     private SensorManager ppsSensorManager;
     private Sensor ppsAccelerometer;
@@ -79,8 +56,6 @@ public class MainActivity extends Activity implements SensorEventListener {
     // http://www.ymc.ch/en/smooth-true-north-compass-values  nice discussion of smoothing.
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        markLocationButton = (Button) findViewById(R.id.markLocationButton);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         playaPositioningSystem = PlayaPositioningSystem.getInstance();
@@ -193,63 +168,52 @@ public class MainActivity extends Activity implements SensorEventListener {
         PlayaPoint here = playaPositioningSystem.getHere();
         PlayaPoint there = playaPositioningSystem.getThere();
         PlayaNavigate hereToThere = new PlayaNavigate(); // TODO should this be in PPS? Circular
+
         setContentView(R.layout.activity_main);
-
-        // ok if declared up top for global but
-        tvGSName = (TextView) findViewById(R.id.gsName);
-        tvGSLatLon = (TextView) findViewById(R.id.gsLatLon);
-        tvHereName = (TextView) findViewById(R.id.hereName);
-        tvHereLatLon = (TextView) findViewById(R.id.hereLatLon);
-        tvHereMcadmdf = (TextView) findViewById(R.id.heremcadmdf);
-        tvHereAddress = (TextView) findViewById(R.id.hereAddress);
-        tvThereName = (TextView) findViewById(R.id.thereName);
-        tvThereLatLon = (TextView) findViewById(R.id.thereLatLon);
-        tvThereMcadmdf = (TextView) findViewById(R.id.theremcadmdf);
-        tvRose = (TextView) findViewById(R.id.Rose);
-        tvThereAddress = (TextView) findViewById(R.id.thereAddress);
-        tvRoseInt = (TextView) findViewById(R.id.RoseDeg);
-        tvRoseHeading = (TextView) findViewById(R.id.RoseHeading);
-        tvRoseWind = (TextView) findViewById(R.id.RoseWind);
-        tvNavigation = (TextView) findViewById(R.id.navigation);
-        tvNavMBearing = (TextView) findViewById(R.id.navMagBearing);
-        tvNavNBearing = (TextView) findViewById(R.id.navNorthBearing);
-        tvNavDistFeet = (TextView) findViewById(R.id.navDistFeet);
-        markLocationButton = (Button) findViewById(R.id.markLocationButton);
-
         // golden spike
-        tvGSName.setText("Golden Spike: " + String.valueOf(gs.datum));
-        tvGSLatLon.setText(String.valueOf(gs.latlon));
+        TextView gsname = (TextView) findViewById(R.id.gsName);
+        gsname.setText("*** Golden Spike: " + String.valueOf(gs.datum));
+        TextView gslatlon = (TextView) findViewById(R.id.gsLatLon);
+        gslatlon.setText(String.valueOf(gs.latlon));
 
         // here
-        tvHereName.setText("Here: " + String.valueOf(here.name));
-        tvHereLatLon.setText(String.valueOf(here.latlon));
-        tvHereMcadmdf.setText(String.valueOf(here.mcadmdf));
-        tvHereAddress.setText(here.address);    // can increase precision if desired
+        TextView herename = (TextView) findViewById(R.id.hereName);
+        herename.setText("*** Here: " + String.valueOf(here.name));
+        TextView herelatlon = (TextView) findViewById(R.id.hereLatLon);
+        TextView heremcadmdf = (TextView) findViewById(R.id.heremcadmdf);
+        herelatlon.setText(String.valueOf(here.latlon));
+        heremcadmdf.setText(String.valueOf(here.mcadmdf));
+        TextView hereaddress = (TextView) findViewById(R.id.hereAddress);
+        hereaddress.setText(here.address);    // can increase precision if desired
 
         // there
-        tvThereName.setText("There: " + String.valueOf(there.name));
-        tvThereLatLon.setText(String.valueOf(there.latlon));
-        tvThereMcadmdf.setText(String.valueOf(there.mcadmdf));
-        tvThereAddress.setText(there.address);    // can increase precision if desired
+        TextView therename = (TextView) findViewById(R.id.thereName);
+        therename.setText("*** There: " + String.valueOf(there.name));
+        TextView therelatlon = (TextView) findViewById(R.id.thereLatLon);
+        TextView theremcadmdf = (TextView) findViewById(R.id.theremcadmdf);
+        therelatlon.setText(String.valueOf(there.latlon));
+        theremcadmdf.setText(String.valueOf(there.mcadmdf));
+        TextView thereaddress = (TextView) findViewById(R.id.thereAddress);
+        thereaddress.setText(there.address);    // can increase precision if desired
 
         // electronic compass  uses ppsAccelerometer and magnetic field sensors
-        tvRose.setText("Compass Rose");
-        tvRoseInt.setText(String.format("%03d", heading.roseDeg));
-        tvRoseHeading.setText(String.valueOf(heading.roseHeading));
-        tvRoseWind.setText(String.valueOf(heading.roseWind));
+        TextView Rose = (TextView) findViewById(R.id.Rose);
+        Rose.setText("*** Compass Rose");
+        TextView RoseInt = (TextView) findViewById(R.id.RoseDeg);
+        RoseInt.setText(String.format("Mag: " + "%03d", heading.roseDeg));
+        TextView RoseHeading = (TextView) findViewById(R.id.RoseHeading);
+        RoseHeading.setText("Heading: " + String.valueOf(heading.roseHeading));
+        TextView RoseWind = (TextView) findViewById(R.id.RoseWind);
+        RoseWind.setText("Wind: " + String.valueOf(heading.roseWind));
 
         // navigation route
-        tvNavigation.setText("Navigation");
-        tvNavNBearing.setText("Nav Magnetic Bearing: "+ String.format("%4.1f",hereToThere.navBearingM));
-        tvNavMBearing.setText("Nav North Bearing: " + String.format("%4.1f",hereToThere.navBearingN));
-        tvNavDistFeet.setText("Nav Dist Feet: " + String.format("%8.0f",hereToThere.navdf));
-
-    }
-
-    public void markButtonClicked(View view) {
-        Log.i("info", "MarkButtonClicked");
-        PlayaPoint updatedThere = new PlayaPoint(playaPositioningSystem.getHere().lat, playaPositioningSystem.getHere().lon, 0.0, "markClick");
-        playaPositioningSystem.setThere(updatedThere);
+        TextView navigation = (TextView) findViewById(R.id.navigation);
+        navigation.setText("*** Navigation");
+        TextView navmagbearing = (TextView) findViewById(R.id.navMagBearing);
+        navmagbearing.setText("Mag:   " + String.format("%4.1f", hereToThere.navBearingM));
+        TextView navnorthbearing = (TextView) findViewById(R.id.navNorthBearing);
+        navnorthbearing.setText("North: " + String.format("%4.1f", hereToThere.navBearingN));
+        TextView navdistfeet = (TextView) findViewById(R.id.navDistFeet);
+        navdistfeet.setText("Nav Distance (FT): " + String.format("%6.0f", hereToThere.navdf));
     }
 }
-
