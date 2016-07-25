@@ -11,7 +11,7 @@ public class PlayaHeading {
     public String roseHeading;
     GoldenSpike goldenSpike = GoldenSpike.getInstance();        // need this for declination of golden spike
     static int rbi = 0;      // ring buffer index
-    static int rSize = 16;     // size of ring buffer
+    static int rSize = 8;     // size of ring buffer
     static int rDiv = 0;        // ring divisor; builds to ring size with repeated calls
     static double azValSin[] = new double[rSize];
     static double azValCos[] = new double[rSize];
@@ -19,7 +19,6 @@ public class PlayaHeading {
     static double oldCos = 0f;
     static double sumSin = 0f;
     static double sumCos = 0f;
-
 
     static {
         rbi = 0;      // ring buffer index
@@ -141,7 +140,6 @@ public class PlayaHeading {
 
     double AverageAzimuth(double azInDegrees)     // compute the average of N compass readings and give the rolling average
     {
-        int rSize = 16;           // number of samples in running average
         double azInRadians;      //angle in radians
         double newSin = 0f;
         double newCos = 0f;
