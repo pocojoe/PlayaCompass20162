@@ -34,7 +34,6 @@ import com.hoppercodes.PlayaPositioningSystem.PlayaPoint;
 import com.hoppercodes.PlayaPositioningSystem.PlayaPositioningSystem;
 
 public class MainActivity extends Activity implements SensorEventListener {
-
     TextView tvGSName;
     TextView tvGSLatLon;
     TextView tvHereName;
