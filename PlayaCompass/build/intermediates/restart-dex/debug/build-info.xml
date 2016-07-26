@@ -4,27 +4,27 @@
     api-level="23"
     density="xhdpi"
     format="7"
-    timestamp="54001593368397"
+    timestamp="28820566926166"
     token="-6786540356572923857" >
 
     <task
         name="javac"
-        duration="174" />
+        duration="254" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="193" />
+        duration="264" />
     <task
         name="verifier"
-        duration="17" />
+        duration="159" />
 
     <artifact
         location="C:\proj\PlayaCompass20162\PlayaCompass\build\outputs\apk\playacompass-debug.apk"
         type="MAIN" />
 
-    <build timestamp="54001593368397" >
+    <build timestamp="28820566926166" >
         <artifact
             location="C:\proj\PlayaCompass20162\PlayaCompass\build\outputs\apk\playacompass-debug.apk"
             type="MAIN" />

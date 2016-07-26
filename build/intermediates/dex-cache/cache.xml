@@ -5,14 +5,14 @@
         jar="C:\proj\PlayaCompass20162\PlayaCompass\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="24.0.0"
-        sha1="ae816b125f088301afa464d2a5b76dd1a61bc6d0">
+        sha1="203c96f58ac225384d1be3bc38081ea8bb2940e2">
         <dex dex="C:\proj\PlayaCompass20162\PlayaCompass\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_963788579e83d914a9d116a7ac6d5d39dc3ab926\classes.dex" />
     </item>
     <item
         jar="C:\proj\PlayaCompass20162\PlayaCompass\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="24.0.0"
-        sha1="54232657ad71988fad859fd0e6ddc2a48f13bb42">
+        sha1="57b5ba7b9a4cec023797a621bb48c41a0c67014b">
         <dex dex="C:\proj\PlayaCompass20162\PlayaCompass\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_72fc6e8572dc31fda9b172e4237ac781cd6509aa\classes.dex" />
     </item>
 
