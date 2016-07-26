@@ -1,0 +1,80 @@
+package com.hoppercodes.PlayaCompass;
+
+import android.app.Activity;
+import android.hardware.SensorEventListener;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+
+import com.hoppercodes.PlayaPositioningSystem.GoldenSpike;
+import com.hoppercodes.PlayaPositioningSystem.PlayaHeading;
+import com.hoppercodes.PlayaPositioningSystem.PlayaNavigate;
+import com.hoppercodes.PlayaPositioningSystem.PlayaPoint;
+
+
+public class MainActivity extends Activity implements SensorEventListener {
+
+
+    public class PC {
+        void PlayaDisplayBasics() {
+            GoldenSpike gs = playaPositioningSystem.getGs();
+            PlayaHeading heading = playaPositioningSystem.getHeading();
+            PlayaPoint here = playaPositioningSystem.getHere();
+            PlayaPoint there = playaPositioningSystem.getThere();
+            PlayaNavigate hereToThere = new PlayaNavigate(); // TODO should this be in PPS? Circular
+
+            setContentView(R.layout.activity_main);
+            // golden spike
+            TextView gsname = (TextView) findViewById(R.id.gsName);
+            gsname.setText("*** Golden Spike: " + String.valueOf(gs.datum));
+            TextView gslatlon = (TextView) findViewById(R.id.gsLatLon);
+            gslatlon.setText(String.valueOf(gs.latlon));
+
+            // here
+            TextView herename = (TextView) findViewById(R.id.hereName);
+            herename.setText("*** Here: " + String.valueOf(here.name));
+            TextView herelatlon = (TextView) findViewById(R.id.hereLatLon);
+            TextView heremcadmdf = (TextView) findViewById(R.id.heremcadmdf);
+            herelatlon.setText(String.valueOf(here.latlon));
+            heremcadmdf.setText(String.valueOf(here.mcadmdf));
+            TextView hereaddress = (TextView) findViewById(R.id.hereAddress);
+            hereaddress.setText(here.address);    // can increase precision if desired
+
+            // there
+            TextView therename = (TextView) findViewById(R.id.thereName);
+            therename.setText("*** There: " + String.valueOf(there.name));
+            TextView therelatlon = (TextView) findViewById(R.id.thereLatLon);
+            TextView theremcadmdf = (TextView) findViewById(R.id.theremcadmdf);
+            therelatlon.setText(String.valueOf(there.latlon));
+            theremcadmdf.setText(String.valueOf(there.mcadmdf));
+            TextView thereaddress = (TextView) findViewById(R.id.thereAddress);
+            thereaddress.setText(there.address);    // can increase precision if desired
+
+            // electronic compass  uses ppsAccelerometer and magnetic field sensors
+            TextView Rose = (TextView) findViewById(R.id.Rose);
+            Rose.setText("*** Compass Rose");
+            TextView RoseInt = (TextView) findViewById(R.id.RoseDeg);
+            RoseInt.setText(String.format("Mag: " + "%03d", heading.roseDeg));
+            TextView RoseHeading = (TextView) findViewById(R.id.RoseHeading);
+            RoseHeading.setText("Heading: " + String.valueOf(heading.roseHeading));
+            TextView RoseWind = (TextView) findViewById(R.id.RoseWind);
+            RoseWind.setText("Wind: " + String.valueOf(heading.roseWind));
+
+            // navigation route
+            TextView navigation = (TextView) findViewById(R.id.navigation);
+            navigation.setText("*** Navigation");
+            TextView navmagbearing = (TextView) findViewById(R.id.navMagBearing);
+            navmagbearing.setText("Mag:   " + String.format("%4.1f", hereToThere.navBearingM));
+            TextView navnorthbearing = (TextView) findViewById(R.id.navNorthBearing);
+            navnorthbearing.setText("North: " + String.format("%4.1f", hereToThere.navBearingN));
+            TextView navdistfeet = (TextView) findViewById(R.id.navDistFeet);
+            navdistfeet.setText("Nav Distance (FT): " + String.format("%6.0f", hereToThere.navdf));
+        }
+
+        void MarkButtonClicked(View v) {
+            Log.i("info", "MarkButtonClicked");
+        }
+
+
+    }
+}

@@ -18,8 +18,35 @@ import com.hoppercodes.PlayaCompass.R;
 import com.hoppercodes.PlayaPositioningSystem.*;
 
 import android.os.Bundle;
-/*
-TextView gsname = (TextView) findViewById(R.id.gsName);
+
+
+public PlayaPositioningSystem pps;
+
+public class MainActivity extends Activity {
+
+    pps=new
+
+    PlayaPositioningSystem();
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Log.i("info", "hi mom");
+        Log.i("info", "able to create pps");
+    }
+
+    void MarkButtonClicked(View v) {
+        Log.i("info", "MarkButtonClicked");
+    }
+
+    void PlayaDisplayBasics() {
+        /*
+        PlayaNavigate hereToThere = new PlayaNavigate(); // TODO should this be in PPS? Circular
+
+        TextView gsname = (TextView) findViewById(R.id.gsName);
         TextView gslatlon = (TextView) findViewById(R.id.gsLatLon);
         TextView herename = (TextView) findViewById(R.id.hereName);
         TextView herelatlon = (TextView) findViewById(R.id.hereLatLon);
@@ -35,32 +62,9 @@ TextView gsname = (TextView) findViewById(R.id.gsName);
         TextView navmagbearing = (TextView) findViewById(R.id.navMagBearing);
         TextView navnorthbearing = (TextView) findViewById(R.id.navNorthBearing);
         TextView navdistfeet = (TextView) findViewById(R.id.navDistFeet);
-*/
-
-public class MainActivity extends Activity {
-    public PlayaPositioningSystem pps;
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
-        Log.i("info", "hi mom");
-        Log.i("info", "able to create pps");
-    }
-
-    void MarkButtonClicked(View v) {
-        Log.i("info", "MarkButtonClicked");
-    }
-
-    /*
-
-    void PlayaDisplayBasics() {
-        //PlayaNavigate hereToThere = new PlayaNavigate(); // TODO should this be in PPS? Circular
 
         setContentView(R.layout.activity_main);
+
         // golden spike
         gsname.setText(pps.gsdatum);
         gslatlon.setText(pps.gslatlon);
@@ -86,8 +90,7 @@ public class MainActivity extends Activity {
         navmagbearing.setText(pps.navBearingM);
         navnorthbearing.setText(pps.navBearingN);
         navdistfeet.setText(pps.navdf);
+        */
     }
-
-    */
 }
 
