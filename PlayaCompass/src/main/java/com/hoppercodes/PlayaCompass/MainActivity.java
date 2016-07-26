@@ -14,8 +14,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.hoppercodes.PlayaCompass.R;
+import com.hoppercodes.PlayaPositioningSystem.PlayaPositioningSystem;
 
-import com.hoppercodes.PlayaPositioningSystem.*;
 
 import android.os.Bundle;
 
@@ -24,16 +24,14 @@ public PlayaPositioningSystem pps;
 
 public class MainActivity extends Activity {
 
-    pps=new
-
-    PlayaPositioningSystem();
+    //pps=new PlayaPositioningSystem();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        pps = new PlayaPositioningSystem();
         Log.i("info", "hi mom");
         Log.i("info", "able to create pps");
     }

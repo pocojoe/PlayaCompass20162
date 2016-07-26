@@ -26,7 +26,7 @@ import com.hoppercodes.PlayaCompass.R;
 public final class PlayaPositioningSystem extends Activity implements SensorEventListener {
     ///////////////////////////////////////////////////////////////
     GoldenSpike gs; // GoldenSpike(40.7864, -119.20065, 315.0, "GS 2016");
-    PlayaHeading heading = new PlayaHeading(0f);
+    PlayaHeading heading = new PlayaHeading(0f);  // compass module
     PlayaPoint here = new PlayaPoint(40.7864, -119.2065, 10.0, "GS 2016");
     // PlayaPoint there = new PlayaPoint(40.7864, -119.2065, 10.0, "GS 2016");
     PlayaPoint there = new PlayaPoint(32.250018, -110.944092, 10.0, "Bookmans");
@@ -34,6 +34,7 @@ public final class PlayaPositioningSystem extends Activity implements SensorEven
     //PlayaHeading heading = playaPositioningSystem.getHeading();
     //PlayaPoint here = playaPositioningSystem.getHere();
     //PlayaPoint there = playaPositioningSystem.getThere();
+    PlayaNavigate hereToThere = new PlayaNavigate();  // navigation module
 
     public String gsdatum = "1";
     public String gslatlon = "2";
@@ -88,6 +89,12 @@ public final class PlayaPositioningSystem extends Activity implements SensorEven
         return gs;
     }
 
+    public void setGoldenSpike(GoldenSpike gs) {
+        this.gs = gs
+    }
+
+    ;
+
     public PlayaHeading getHeading() {
         return heading;
     }
@@ -110,6 +117,14 @@ public final class PlayaPositioningSystem extends Activity implements SensorEven
 
     public void setThere(PlayaPoint there) {
         this.there = there;
+    }
+
+    public PlayaPoint getHereToThere() {
+        return hereToThere;
+    }
+
+    public void setHereToThere(PlayaPoint hereToThere) {
+        this.hereToThere = hereToThere;
     }
 
 
