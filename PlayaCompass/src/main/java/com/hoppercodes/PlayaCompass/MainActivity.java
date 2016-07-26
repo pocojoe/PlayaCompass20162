@@ -17,25 +17,45 @@ import com.hoppercodes.PlayaCompass.R;
 
 import com.hoppercodes.PlayaPositioningSystem.*;
 
+import android.os.Bundle;
+/*
+TextView gsname = (TextView) findViewById(R.id.gsName);
+        TextView gslatlon = (TextView) findViewById(R.id.gsLatLon);
+        TextView herename = (TextView) findViewById(R.id.hereName);
+        TextView herelatlon = (TextView) findViewById(R.id.hereLatLon);
+        TextView heremcadmdf = (TextView) findViewById(R.id.heremcadmdf);
+        TextView hereaddress = (TextView) findViewById(R.id.hereAddress);
+        TextView therename = (TextView) findViewById(R.id.thereName);
+        TextView therelatlon = (TextView) findViewById(R.id.thereLatLon);
+        TextView theremcadmdf = (TextView) findViewById(R.id.theremcadmdf);
+        TextView thereaddress = (TextView) findViewById(R.id.thereAddress);
+        TextView RoseInt = (TextView) findViewById(R.id.RoseDeg);
+        TextView RoseHeading = (TextView) findViewById(R.id.RoseHeading);
+        TextView RoseWind = (TextView) findViewById(R.id.RoseWind);
+        TextView navmagbearing = (TextView) findViewById(R.id.navMagBearing);
+        TextView navnorthbearing = (TextView) findViewById(R.id.navNorthBearing);
+        TextView navdistfeet = (TextView) findViewById(R.id.navDistFeet);
+*/
+
 public class MainActivity extends Activity {
     public PlayaPositioningSystem pps;
 
-    TextView gsname = (TextView) findViewById(R.id.gsName);
-    TextView gslatlon = (TextView) findViewById(R.id.gsLatLon);
-    TextView herename = (TextView) findViewById(R.id.hereName);
-    TextView herelatlon = (TextView) findViewById(R.id.hereLatLon);
-    TextView heremcadmdf = (TextView) findViewById(R.id.heremcadmdf);
-    TextView hereaddress = (TextView) findViewById(R.id.hereAddress);
-    TextView therename = (TextView) findViewById(R.id.thereName);
-    TextView therelatlon = (TextView) findViewById(R.id.thereLatLon);
-    TextView theremcadmdf = (TextView) findViewById(R.id.theremcadmdf);
-    TextView thereaddress = (TextView) findViewById(R.id.thereAddress);
-    TextView RoseInt = (TextView) findViewById(R.id.RoseDeg);
-    TextView RoseHeading = (TextView) findViewById(R.id.RoseHeading);
-    TextView RoseWind = (TextView) findViewById(R.id.RoseWind);
-    TextView navmagbearing = (TextView) findViewById(R.id.navMagBearing);
-    TextView navnorthbearing = (TextView) findViewById(R.id.navNorthBearing);
-    TextView navdistfeet = (TextView) findViewById(R.id.navDistFeet);
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        Log.i("info", "hi mom");
+        Log.i("info", "able to create pps");
+    }
+
+    void MarkButtonClicked(View v) {
+        Log.i("info", "MarkButtonClicked");
+    }
+
+    /*
 
     void PlayaDisplayBasics() {
         //PlayaNavigate hereToThere = new PlayaNavigate(); // TODO should this be in PPS? Circular
@@ -68,8 +88,6 @@ public class MainActivity extends Activity {
         navdistfeet.setText(pps.navdf);
     }
 
-    void MarkButtonClicked(View v) {
-        Log.i("info", "MarkButtonClicked");
-    }
+    */
 }
 

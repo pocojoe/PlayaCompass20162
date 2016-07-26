@@ -4,32 +4,32 @@
     api-level="23"
     density="xhdpi"
     format="7"
-    timestamp="34030473495562"
+    timestamp="8697260169975"
     token="-6786540356572923857" >
 
     <task
         name="javac"
-        duration="234" />
+        duration="88" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="44" />
+        duration="39" />
     <task
         name="verifier"
-        duration="1" />
+        duration="2" />
 
     <artifact
-        location="C:\proj\PlayaCompass20162\PlayaCompass\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
+        location="C:\proj\PlayaCompass20162\PlayaCompass\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
         type="DEX" />
 
-    <build timestamp="33004565155861" >
+    <build timestamp="8307498873358" >
         <artifact
             location="C:\proj\PlayaCompass20162\PlayaCompass\build\outputs\apk\playacompass-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="33821917864220" >
+    <build timestamp="8697260169975" >
         <artifact
             location="C:\proj\PlayaCompass20162\PlayaCompass\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
             type="DEX" />

@@ -70,7 +70,7 @@ public final class PlayaPositioningSystem extends Activity implements SensorEven
     private PPSLocationListener ppsListener;
     private PlayaPositioningSystem playaPositioningSystem;
 
-    // these need to be persistent, when I moved them within onSensorChanged things quit working
+    // variables for the compass module to function
     float[] lastAccelerometer = new float[3];
     float[] lastMagnetometer = new float[3];
     boolean lastAccelerometerSet = false;
@@ -81,6 +81,7 @@ public final class PlayaPositioningSystem extends Activity implements SensorEven
 
     private PlayaPositioningSystem() {
         this.gs = GoldenSpike.getInstance();
+        Log.i("info", "PlayaPositioningSystem Constructor");
     }
 
     public GoldenSpike getGs() {
@@ -141,6 +142,7 @@ public final class PlayaPositioningSystem extends Activity implements SensorEven
             // need something here saying be patient, waiting for GPS
         }
         ppsLocationManager.requestLocationUpdates(ppsProvider, 200, 1, ppsListener);
+        Log.i("info", "onCreate override of pps exit");
     }
 
     @Override
@@ -189,6 +191,7 @@ public final class PlayaPositioningSystem extends Activity implements SensorEven
         public void onLocationChanged(Location location) {
             PlayaPoint updatedHere = new PlayaPoint(location.getLatitude(), location.getLongitude(), location.getAccuracy(), location.getProvider());
             playaPositioningSystem.setHere(updatedHere);
+            Log.i("info", "LocationUpdate");
             //Toast.makeText(MainActivity.this, "GPS Update",
             //Toast.LENGTH_SHORT).show();
             //PlayaDisplayBasics();
