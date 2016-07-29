@@ -39,12 +39,12 @@ ADDED from C:\proj\PlayaCompass\PlayaCompass\src\main\AndroidManifest.xml:13:5-2
 		ADDED from C:\proj\PlayaCompass\PlayaCompass\src\main\AndroidManifest.xml:15:9-45
 	android:theme
 		ADDED from C:\proj\PlayaCompass\PlayaCompass\src\main\AndroidManifest.xml:17:9-40
-activity#com.hoppercodes.PlayaCompass.MainActivity
+activity#com.hoppercodes.MainActivity
 ADDED from C:\proj\PlayaCompass\PlayaCompass\src\main\AndroidManifest.xml:18:9-25:20
 	android:label
 		ADDED from C:\proj\PlayaCompass\PlayaCompass\src\main\AndroidManifest.xml:20:13-45
 	android:name
-		ADDED from C:\proj\PlayaCompass\PlayaCompass\src\main\AndroidManifest.xml:19:13-69
+		ADDED from C:\proj\PlayaCompass\PlayaCompass\src\main\AndroidManifest.xml:19:13-56
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from C:\proj\PlayaCompass\PlayaCompass\src\main\AndroidManifest.xml:21:13-24:29
 action#android.intent.action.MAIN
