@@ -2,12 +2,12 @@ package com.hoppercodes.PlayaPositioningSystem;
 
 public final class PlayaPositioningSystem {
     // these values represent the "public interface" of Playa Positioning System
-    // man location
+    // man location: iniitalizes PlayaMan
     public static double manLat;
     public static double manLon;
     public static double manNorthAngle;
     public static String manLabel;
-    // present location description
+    // present location description: initializes point Here
     public static double hereLat;
     public static double hereLon;
     public static double hereAcc;
@@ -16,7 +16,7 @@ public final class PlayaPositioningSystem {
     public static int hereMin;
     public static double hereDistFeet;
     public static String hereStreet;
-    // destination location description
+    // destination location description:  Initializes point There
     public static double thereLat;
     public static double thereLon;
     public static double thereAcc;
@@ -25,13 +25,13 @@ public final class PlayaPositioningSystem {
     public static int thereMin;
     public static double thereDistFeet;
     public static String thereStreet;
-    // bearing:  direction and distance from present location to destination
+    // bearing:  direction and distance from present location (here) to destination (there)
     public static double bearingDegMag;
     public static double bearingDegNorth;
     public static double bearingDistFeet;
     public static String bearingRose;
     public static String bearingLabel;
-    // heading: present compass heading of device (long axis)
+    // heading: present compass heading of device (long axis), used to orient user which way to go.
     public static double headingDegMag;
     public static double headingDegNorth;
     public static String headingRose;
@@ -77,7 +77,8 @@ public final class PlayaPositioningSystem {
 
 
     ///////////////////////////////////////////////////////////////
-    GoldenSpike gs; // GoldenSpike(40.7864, -119.20065, 315.0, "GS 2016");
+    //PlayaMan gs; // PlayaMan(40.7864, -119.20065, 315.0, "GS 2016");
+    PlayaMan gs = new PlayaMan(this.manLat, this.manLon, this.manNorthAngle, this.manLabel);
     PlayaHeading heading = new PlayaHeading(0f);
     PlayaPoint here = new PlayaPoint(40.7864, -119.2065, 10.0, "GS 2016");
     // PlayaPoint there = new PlayaPoint(40.7864, -119.2065, 10.0, "GS 2016");
@@ -93,10 +94,10 @@ public final class PlayaPositioningSystem {
     }
 
     private PlayaPositioningSystem() {
-        this.gs = GoldenSpike.getInstance();
+        this.gs = PlayaMan.getInstance();
     }
 
-    public GoldenSpike getGs() {
+    public PlayaMan getGs() {
         return gs;
     }
 

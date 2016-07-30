@@ -193,7 +193,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     void PlayaDisplayBasics() {
 
 /*
-        GoldenSpike gs = pps.getGs();
+        PlayaMan gs = pps.getGs();
         PlayaHeading heading = pps.getHeading();
         PlayaPoint here = pps.getHere();
         PlayaPoint there = pps.getThere();

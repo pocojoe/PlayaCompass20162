@@ -21,7 +21,7 @@ public class PlayaNavigate {           // navigate from point here to point ther
         double dxf;     // east-west navigation vector in feet
         double dyf;     // north-south navigation vector in feet
         double ucad;    // unit circle angle, degrees
-        GoldenSpike gs = playaPositioningSystem.getGs();
+        PlayaMan gs = playaPositioningSystem.getGs();
         PlayaPoint here = playaPositioningSystem.getHere();
         PlayaPoint there = playaPositioningSystem.getThere();
         PlayaHeading heading = playaPositioningSystem.getHeading();  // heading is the direction one is currently facing; bearing is the direction to there from here

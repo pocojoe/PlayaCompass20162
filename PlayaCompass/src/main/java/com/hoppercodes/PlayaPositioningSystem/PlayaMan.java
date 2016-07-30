@@ -1,9 +1,8 @@
 package com.hoppercodes.PlayaPositioningSystem;
 
-import java.util.Date;
 import android.hardware.GeomagneticField;
 
-public class GoldenSpike { // the golden spike is the latitude and longitude of the location on the playa where the man is constructed.
+public class PlayaMan {         // the Man is positioned at the Golden Spike: a stake driven on the playa at latitude and longitude where the man is constructed.
     // first three are same as in PlayaPoint - but no precision is associated.
     public String datum;       // name of datum - each year the datum changes with golden spike
     public String latlon;      // latitude longitude string, formatted to 5 decimal places, separated by comma
@@ -16,20 +15,22 @@ public class GoldenSpike { // the golden spike is the latitude and longitude of 
     public double fpdlat;      // feet per degree latitude
     public double fpdlon;      // feet per degree longitude
 
-    private static GoldenSpike instance;
+    private static PlayaMan instance;
 
-    public static synchronized GoldenSpike getInstance(){
+    public static synchronized PlayaMan getInstance() {
         if(instance == null){
-            // instance = new GoldenSpike(40.7864, -119.2065, 315.0, "BRC MAN 2016");
-            instance = new GoldenSpike(32.250018, -110.944092, 315.0, "Campbell/Grant, Tucson");
-            // instance = new GoldenSpike(43.58521, -71.21275, 315.0, "Seven Suns");
-            // instance = new GoldenSpike(-37.761865, -122.412137, 315.0, "BM HQ Alabama Street");
-            // instance = new GoldenSpike(43.585667,-71.142033, 315.0, "Point House");
+            // instance = new PlayaMan(40.7864, -119.2065, 315.0, "BRC MAN 2016");
+            instance = new PlayaMan(32.250018, -110.944092, 315.0, "Campbell/Grant, Tucson");
+            // instance = new PlayaMan(43.58521, -71.21275, 315.0, "Seven Suns");
+            // instance = new PlayaMan(-37.761865, -122.412137, 315.0, "BM HQ Alabama Street");
+            // instance = new PlayaMan(43.585667,-71.142033, 315.0, "Point House");
         }
         return instance;
     }
 
-    private GoldenSpike(double tlat, double tlon, double ttncad, String tname) {   // constructor
+    //private PlayaMan(double tlat, double tlon, double ttncad, String tname) {   // constructor  // dave's synchronizer
+    public PlayaMan(double tlat, double tlon, double ttncad, String tname) {   // constructor
+
         this.lat = tlat;
         this.lon = tlon;
         this.tncad = ttncad;

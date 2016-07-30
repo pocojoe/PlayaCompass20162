@@ -1,7 +1,5 @@
 package com.hoppercodes.PlayaPositioningSystem;
 
-import com.hoppercodes.playacompass.R;
-
 /**
  * Created by hexagon on 6/24/16.
  */
@@ -21,7 +19,7 @@ public class PlayaPoint {  // Playa Point:  a complete position description of a
     int mcah;       // man clock angle, Hours: 0 to 360 degrees maps from 00:00 to 11:59:59, allowing 1 ft resolution
     int mcam;       // man clock angle, Minutes
     int mcas;       // man clock angle, Seconds  (for the obsessive among us, gives about 1 foot of resolution along the perimeter fence)
-    GoldenSpike goldenSpike = GoldenSpike.getInstance();
+    PlayaMan goldenSpike = PlayaMan.getInstance();
 
     // Degree Madness:  There are four different methods of measuring angles in this system.
     // Picture a clock- 12:00 is vertical, 3:00 to right, 6:00 down, and 9:00 to left of the center of the clock
