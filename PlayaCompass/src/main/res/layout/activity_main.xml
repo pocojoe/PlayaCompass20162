@@ -26,7 +26,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/markLocationButton"
         android:text="gsName"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/gsLatLon"
@@ -36,7 +36,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/gsName"
         android:text="gsLatLon"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/hereName"
@@ -46,7 +46,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/gsLatLon"
         android:text="hereName"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/hereLatLon"
@@ -56,28 +56,28 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/hereName"
         android:text="hereLatLon"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/heremcadmdf"
+        android:id="@+id/hereMcadMdf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/hereLatLon"
         android:text="hereMcadMdf"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
     <TextView
-        android:id="@+id/hereAddress"
+        android:id="@+id/hereStreet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/heremcadmdf"
-        android:text="hereAddress"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_below="@+id/hereMcadMdf"
+        android:text="hereStreet"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/thereName"
@@ -85,9 +85,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/hereAddress"
+        android:layout_below="@+id/hereStreet"
         android:text="thereName"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/thereLatLon"
@@ -97,107 +97,118 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/thereName"
         android:text="thereLatLon"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/theremcadmdf"
+        android:id="@+id/thereMcadMdf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/thereLatLon"
         android:text="thereMcadMdf"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/thereAddress"
+        android:id="@+id/thereStreet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/theremcadmdf"
-        android:text="thereAddress"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_below="@+id/thereMcadMdf"
+        android:text="thereStreet"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/Rose"
+        android:id="@+id/bearingName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/thereAddress"
-        android:text="Compass Rose"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_below="@+id/thereStreet"
+        android:text="bearingName"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/RoseDeg"
+        android:id="@+id/bearingDistFeet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/Rose"
-        android:text="roseDeg"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_below="@+id/bearingName"
+        android:text="bearingDistFeet"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
 
     <TextView
-        android:id="@+id/RoseHeading"
+        android:id="@+id/bearingDeg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/RoseDeg"
-        android:text="roseHeading"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_below="@+id/bearingDistFeet"
+        android:text="bearingDeg"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/RoseWind"
+        android:id="@+id/bearingRose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/RoseHeading"
-        android:text="roseWind"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_below="@+id/bearingDeg"
+        android:text="bearingRose"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/navigation"
+        android:id="@+id/bearingLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/RoseWind"
-        android:text="Navigation"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_below="@+id/bearingRose"
+        android:text="bearingLabel"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/navMagBearing"
+        android:id="@+id/headingName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/navigation"
-        android:text="navMagBearing"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
+        android:layout_below="@+id/bearingLabel"
+        android:text="headingName"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/navNorthBearing"
+        android:id="@+id/headingDeg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/navMagBearing"
-        android:text="navNorthBearing"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_below="@+id/headingName"
+        android:text="headingDeg"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/navDistFeet"
+        android:id="@+id/headingRose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/navNorthBearing"
-        android:text="navDistFeet"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_below="@+id/headingDeg"
+        android:text="headingRose"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/headingLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/headingRose"
+        android:text="headingLabel"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
 
 </LinearLayout>

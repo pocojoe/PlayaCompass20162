@@ -27,9 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 
-import com.hoppercodes.PlayaPositioningSystem.GoldenSpike;
 import com.hoppercodes.PlayaPositioningSystem.PlayaHeading;
-import com.hoppercodes.PlayaPositioningSystem.PlayaNavigate;
 import com.hoppercodes.PlayaPositioningSystem.PlayaPoint;
 import com.hoppercodes.PlayaPositioningSystem.PlayaPositioningSystem;
 import com.hoppercodes.playacompass.R;
@@ -40,21 +38,23 @@ public class MainActivity extends Activity implements SensorEventListener {
     TextView tvGSLatLon;
     TextView tvHereName;
     TextView tvHereLatLon;
-    TextView tvHereMcadmdf;
-    TextView tvHereAddress;
+    TextView tvHereMcadMdf;
+    TextView tvHereStreet;
     TextView tvThereName;
     TextView tvThereLatLon;
-    TextView tvThereMcadmdf;
-    TextView tvRose;
-    TextView tvThereAddress;
-    TextView tvRoseInt;
-    TextView tvRoseHeading;
-    TextView tvRoseWind;
-    TextView tvNavigation;
-    TextView tvNavNBearing;
-    TextView tvNavMBearing;
-    TextView tvNavDistFeet;
+    TextView tvThereMcadMdf;
+    TextView tvThereStreet;
+    TextView tvBearingName;
+    TextView tvBearingDistFeet;
+    TextView tvBearingDeg;
+    TextView tvBearingRose;
+    TextView tvBearingLabel;
+    TextView tvHeadingName;
+    TextView tvHeadingDeg;
+    TextView tvHeadingRose;
+    TextView tvHeadingLabel;
     Button   markLocationButton;
+
 
     private LocationManager ppsLocationManager;
     private SensorManager ppsSensorManager;
@@ -62,7 +62,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     private Sensor ppsMagnetometer;
     private String ppsProvider;
     private PPSLocationListener ppsListener;
-    private PlayaPositioningSystem playaPositioningSystem;
+    private PlayaPositioningSystem pps;
 
     // these need to be persistent, when I moved them within onSensorChanged things quit working
     float[] lastAccelerometer = new float[3];
@@ -85,7 +85,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        playaPositioningSystem = PlayaPositioningSystem.getInstance();
+        pps = PlayaPositioningSystem.getInstance();
         ppsLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         ppsSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         ppsAccelerometer = ppsSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -108,6 +108,7 @@ public class MainActivity extends Activity implements SensorEventListener {
             // need something here saying be patient, waiting for GPS
         }
         ppsLocationManager.requestLocationUpdates(ppsProvider, 200, 1, ppsListener);
+        PlayaDisplayBasics();
     }
 
     @Override
@@ -150,8 +151,8 @@ public class MainActivity extends Activity implements SensorEventListener {
             float azimuthInRadians = mOrientation[0];
             float azimuthInDegrees = (float) (Math.toDegrees(azimuthInRadians) + 360) % 360;
             PlayaHeading updatedHere = new PlayaHeading(azimuthInDegrees);
-            playaPositioningSystem.setHeading(updatedHere);
-            PlayaDisplayBasics();
+            pps.setHeading(updatedHere);
+            //PlayaDisplayBasics();
         }
     }
 
@@ -164,10 +165,10 @@ public class MainActivity extends Activity implements SensorEventListener {
         @Override
         public void onLocationChanged(Location location) {
             PlayaPoint updatedHere = new PlayaPoint(location.getLatitude(), location.getLongitude(), location.getAccuracy(), location.getProvider());
-            playaPositioningSystem.setHere(updatedHere);
+            pps.setHere(updatedHere);
             Toast.makeText(MainActivity.this, "GPS Update",
                     Toast.LENGTH_SHORT).show();
-            PlayaDisplayBasics();
+            //PlayaDisplayBasics();
         }
 
         @Override
@@ -190,68 +191,70 @@ public class MainActivity extends Activity implements SensorEventListener {
     }
 
     void PlayaDisplayBasics() {
-        GoldenSpike gs = playaPositioningSystem.getGs();
-        PlayaHeading heading = playaPositioningSystem.getHeading();
-        PlayaPoint here = playaPositioningSystem.getHere();
-        PlayaPoint there = playaPositioningSystem.getThere();
-        PlayaNavigate hereToThere = new PlayaNavigate(); // TODO should this be in PPS? Circular
-        setContentView(R.layout.activity_main);
 
+/*
+        GoldenSpike gs = pps.getGs();
+        PlayaHeading heading = pps.getHeading();
+        PlayaPoint here = pps.getHere();
+        PlayaPoint there = pps.getThere();
+        PlayaNavigate hereToThere = new PlayaNavigate(); // TODO should this be in PPS? Circular
+
+*/
         // ok if declared up top for global but
+
+        setContentView(R.layout.activity_main);
+        markLocationButton = (Button) findViewById(R.id.markLocationButton);
+
         tvGSName = (TextView) findViewById(R.id.gsName);
         tvGSLatLon = (TextView) findViewById(R.id.gsLatLon);
         tvHereName = (TextView) findViewById(R.id.hereName);
         tvHereLatLon = (TextView) findViewById(R.id.hereLatLon);
-        tvHereMcadmdf = (TextView) findViewById(R.id.heremcadmdf);
-        tvHereAddress = (TextView) findViewById(R.id.hereAddress);
+        tvHereMcadMdf = (TextView) findViewById(R.id.hereMcadMdf);
+        tvHereStreet = (TextView) findViewById(R.id.hereStreet);
         tvThereName = (TextView) findViewById(R.id.thereName);
         tvThereLatLon = (TextView) findViewById(R.id.thereLatLon);
-        tvThereMcadmdf = (TextView) findViewById(R.id.theremcadmdf);
-        tvRose = (TextView) findViewById(R.id.Rose);
-        tvThereAddress = (TextView) findViewById(R.id.thereAddress);
-        tvRoseInt = (TextView) findViewById(R.id.RoseDeg);
-        tvRoseHeading = (TextView) findViewById(R.id.RoseHeading);
-        tvRoseWind = (TextView) findViewById(R.id.RoseWind);
-        tvNavigation = (TextView) findViewById(R.id.navigation);
-        tvNavMBearing = (TextView) findViewById(R.id.navMagBearing);
-        tvNavNBearing = (TextView) findViewById(R.id.navNorthBearing);
-        tvNavDistFeet = (TextView) findViewById(R.id.navDistFeet);
-        markLocationButton = (Button) findViewById(R.id.markLocationButton);
+        tvThereMcadMdf = (TextView) findViewById(R.id.thereMcadMdf);
+        tvThereStreet = (TextView) findViewById(R.id.thereStreet);
+        tvBearingName = (TextView) findViewById(R.id.bearingName);
+        tvBearingDeg = (TextView) findViewById(R.id.bearingDeg);
+        tvBearingDistFeet = (TextView) findViewById(R.id.bearingDistFeet);
+        tvBearingRose = (TextView) findViewById(R.id.bearingRose);
+        tvBearingLabel = (TextView) findViewById(R.id.bearingLabel);
+        tvHeadingName = (TextView) findViewById(R.id.headingName);
+        tvHeadingDeg = (TextView) findViewById(R.id.headingDeg);
+        tvHeadingRose = (TextView) findViewById(R.id.headingRose);
+        tvHeadingLabel = (TextView) findViewById(R.id.headingLabel);
 
-        // golden spike
-        tvGSName.setText("Golden Spike: " + String.valueOf(gs.datum));
-        tvGSLatLon.setText(String.valueOf(gs.latlon));
-
+        // golden spike, or man location
+        tvGSName.setText("*** Man: " + String.valueOf(pps.manLabel));
+        tvGSLatLon.setText(String.format("%9.4f", pps.manLat) + " " + String.format("%9.4f", pps.manLon) + " " + String.format("%4.1f", pps.manNorthAngle));
         // here
-        tvHereName.setText("Here: " + String.valueOf(here.name));
-        tvHereLatLon.setText(String.valueOf(here.latlon));
-        tvHereMcadmdf.setText(String.valueOf(here.mcadmdf));
-        tvHereAddress.setText(here.address);    // can increase precision if desired
-
+        tvHereName.setText("*** Here: " + String.valueOf(pps.hereLabel));
+        tvHereLatLon.setText(String.format("%9.4f", pps.hereLat) + " " + String.format("%9.4f", pps.hereLon));
+        tvHereMcadMdf.setText(String.format("%02d", pps.hereHour) + ":" + String.format("%02d", pps.hereMin) + " & " + String.format("%4.0f", pps.hereDistFeet));
+        tvHereStreet.setText(String.valueOf(pps.hereStreet));
         // there
-        tvThereName.setText("There: " + String.valueOf(there.name));
-        tvThereLatLon.setText(String.valueOf(there.latlon));
-        tvThereMcadmdf.setText(String.valueOf(there.mcadmdf));
-        tvThereAddress.setText(there.address);    // can increase precision if desired
-
-        // electronic compass  uses ppsAccelerometer and magnetic field sensors
-        tvRose.setText("Compass Rose");
-        tvRoseInt.setText(String.format("%03d", heading.roseDeg));
-        tvRoseHeading.setText(String.valueOf(heading.roseHeading));
-        tvRoseWind.setText(String.valueOf(heading.roseWind));
-
+        tvThereName.setText("*** There: " + String.valueOf(pps.thereLabel));
+        tvThereLatLon.setText(String.format("%9.4f", pps.thereLat) + " " + String.format("%9.4f", pps.thereLon));
+        tvThereMcadMdf.setText(String.format("%02d", pps.thereHour) + ":" + String.format("%02d", pps.thereMin) + " & " + String.format("%4.0f", pps.thereDistFeet));
+        tvThereStreet.setText(String.valueOf(pps.thereStreet));
         // navigation route
-        tvNavigation.setText("Navigation");
-        tvNavNBearing.setText("Nav Magnetic Bearing: "+ String.format("%4.1f",hereToThere.navBearingM));
-        tvNavMBearing.setText("Nav North Bearing: " + String.format("%4.1f",hereToThere.navBearingN));
-        tvNavDistFeet.setText("Nav Dist Feet: " + String.format("%8.0f",hereToThere.navdf));
-
+        tvBearingName.setText("*** Navigation");
+        tvBearingDistFeet.setText("Distance:" + pps.bearingDistFeet);
+        tvBearingDeg.setText("Mag:" + String.format("%05.1f", pps.bearingDegMag) + " North:" + String.format("%05.1f", pps.bearingDegNorth));
+        tvBearingRose.setText(String.valueOf(pps.bearingRose));
+        tvBearingLabel.setText(String.valueOf(pps.bearingLabel));
+        // electronic compass  uses ppsAccelerometer and magnetic field sensors
+        tvHeadingName.setText("*** Electronic Compass");
+        tvHeadingDeg.setText("Mag:" + String.format("%05.1f", pps.headingDegMag) + " North:" + String.format("%05.1f", pps.headingDegNorth));
+        tvHeadingRose.setText(String.valueOf(pps.headingRose));
+        tvHeadingLabel.setText(String.valueOf(pps.headingLabel));
     }
 
     public void markButtonClicked(View view) {
         Log.i("info", "MarkButtonClicked");
-        PlayaPoint updatedThere = new PlayaPoint(playaPositioningSystem.getHere().lat, playaPositioningSystem.getHere().lon, 0.0, "markClick");
-        playaPositioningSystem.setThere(updatedThere);
+        //PlayaPoint updatedThere = new PlayaPoint(pps.getHere().lat, pps.getHere().lon, 0.0, "markClick");
+        //pps.setThere(updatedThere);
     }
 }
 
