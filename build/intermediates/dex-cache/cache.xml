@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="C:\proj\PlayaCompass\PlayaCompass\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="e1a0e5e98e1c20322d4651977c39c21dbb3f04f8">
-        <dex dex="C:\proj\PlayaCompass\PlayaCompass\build\intermediates\pre-dexed\debug\instant-run_bedae9207f8cef265988c6790bff159f5d97817c.jar" />
-    </item>
-    <item
         jar="C:\proj\PlayaCompass\PlayaCompass\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="24.0.0"
-        sha1="ba7691d13bb608b9a4ca565d20de669feea36785">
-        <dex dex="C:\proj\PlayaCompass\PlayaCompass\build\intermediates\pre-dexed\debug\instant-run-bootstrap_3ddc83248ca2f3391481314e623479cae9ef17ec.jar" />
+        sha1="51ff9458f02d03060839826f171daf212b789f37">
+        <dex dex="C:\proj\PlayaCompass\PlayaCompass\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_3ddc83248ca2f3391481314e623479cae9ef17ec\classes.dex" />
+    </item>
+    <item
+        jar="C:\proj\PlayaCompass\PlayaCompass\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="08b862bab355400d9a5507cb2c8d953daef0cfcf">
+        <dex dex="C:\proj\PlayaCompass\PlayaCompass\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_bedae9207f8cef265988c6790bff159f5d97817c\classes.dex" />
     </item>
 
 </items>

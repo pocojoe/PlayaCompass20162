@@ -159,6 +159,7 @@
         android:layout_below="@+id/bearingDeg"
         android:text="bearingRose"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
     <TextView
         android:id="@+id/bearingLabel"
         android:layout_width="wrap_content"
@@ -208,7 +209,6 @@
         android:layout_below="@+id/headingRose"
         android:text="headingLabel"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-
 
 
 </LinearLayout>
