@@ -27,11 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 
-import com.hoppercodes.PlayaPositioningSystem.PlayaHeading;
-import com.hoppercodes.PlayaPositioningSystem.PlayaPoint;
-import com.hoppercodes.PlayaPositioningSystem.PlayaPositioningSystem;
 import com.hoppercodes.playacompass.R;
-
 
 public class MainActivity extends Activity implements SensorEventListener {
     TextView tvGSName;
@@ -62,7 +58,9 @@ public class MainActivity extends Activity implements SensorEventListener {
     private Sensor ppsMagnetometer;
     private String ppsProvider;
     private PPSLocationListener ppsListener;
-    private PlayaPositioningSystem pps;
+
+
+    public PlayaPositioningSystem pps = new PlayaPositioningSystem();
 
     // these need to be persistent, when I moved them within onSensorChanged things quit working
     float[] lastAccelerometer = new float[3];
@@ -71,12 +69,6 @@ public class MainActivity extends Activity implements SensorEventListener {
     boolean lastMagnetometerSet = false;
     float[] mR = new float[9];
     float[] mOrientation = new float[3];
-
-
-    /**
-     * Called when the activity is first created.
-     */
-
     // http://www.techrepublic.com/article/pro-tip-create-your-own-magnetic-compass-using-androids-internal-sensors/
     // http://www.ymc.ch/en/smooth-true-north-compass-values  nice discussion of smoothing.
     @Override
@@ -84,8 +76,9 @@ public class MainActivity extends Activity implements SensorEventListener {
         markLocationButton = (Button) findViewById(R.id.markLocationButton);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        pps = PlayaPositioningSystem.getInstance();
+        setContentView(R.layout.pps_state);
+        // TODO: 7/30/2016
+        pps.update();       // reinitializes pps
         ppsLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         ppsSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         ppsAccelerometer = ppsSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -108,7 +101,7 @@ public class MainActivity extends Activity implements SensorEventListener {
             // need something here saying be patient, waiting for GPS
         }
         ppsLocationManager.requestLocationUpdates(ppsProvider, 200, 1, ppsListener);
-        PlayaDisplayBasics();
+        ppsStateDisplay();
     }
 
     @Override
@@ -129,16 +122,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        /*
-        these did not work to be declared here
-        float[] lastAccelerometer = new float[3];
-        float[] lastMagnetometer = new float[3];
-        boolean lastAccelerometerSet = false;
-        boolean lastMagnetometerSet = false;
-        float[] mR = new float[9];
-        float[] mOrientation = new float[3];
-        */
-        if (event.sensor == ppsAccelerometer) {
+         if (event.sensor == ppsAccelerometer) {
             System.arraycopy(event.values, 0, lastAccelerometer, 0, event.values.length);
             lastAccelerometerSet = true;
         } else if (event.sensor == ppsMagnetometer) {
@@ -150,9 +134,10 @@ public class MainActivity extends Activity implements SensorEventListener {
             SensorManager.getOrientation(mR, mOrientation);
             float azimuthInRadians = mOrientation[0];
             float azimuthInDegrees = (float) (Math.toDegrees(azimuthInRadians) + 360) % 360;
-            PlayaHeading updatedHere = new PlayaHeading(azimuthInDegrees);
-            pps.setHeading(updatedHere);
-            //PlayaDisplayBasics();
+            pps.headingUpdate(azimuthInDegrees);
+            Log.i("info", "onSensorChange azimuth update to pps");
+            ppsStateDisplay();
+            Log.i("info", "onSensorChange: ppsStateDisplay called");
         }
     }
 
@@ -164,11 +149,13 @@ public class MainActivity extends Activity implements SensorEventListener {
     private class PPSLocationListener implements LocationListener {
         @Override
         public void onLocationChanged(Location location) {
-            PlayaPoint updatedHere = new PlayaPoint(location.getLatitude(), location.getLongitude(), location.getAccuracy(), location.getProvider());
-            pps.setHere(updatedHere);
+            // TODO: 7/30/2016
             Toast.makeText(MainActivity.this, "GPS Update",
                     Toast.LENGTH_SHORT).show();
-            //PlayaDisplayBasics();
+            pps.hereUpdate(location.getLatitude(), location.getLongitude(), location.getAccuracy(), location.getProvider());
+            Log.i("info", "PPSLocationListener gps update to pps");
+            ppsStateDisplay();
+            Log.i("info", "PPSLocationListener: ppsStateDisplay called");
         }
 
         @Override
@@ -190,21 +177,10 @@ public class MainActivity extends Activity implements SensorEventListener {
         }
     }
 
-    void PlayaDisplayBasics() {
+    void ppsStateDisplay() {
 
-/*
-        PlayaMan gs = pps.getGs();
-        PlayaHeading heading = pps.getHeading();
-        PlayaPoint here = pps.getHere();
-        PlayaPoint there = pps.getThere();
-        PlayaNavigate hereToThere = new PlayaNavigate(); // TODO should this be in PPS? Circular
-
-*/
-        // ok if declared up top for global but
-
-        setContentView(R.layout.activity_main);
-        markLocationButton = (Button) findViewById(R.id.markLocationButton);
-
+        setContentView(R.layout.pps_state);
+         markLocationButton = (Button) findViewById(R.id.markLocationButton);
         tvGSName = (TextView) findViewById(R.id.gsName);
         tvGSLatLon = (TextView) findViewById(R.id.gsLatLon);
         tvHereName = (TextView) findViewById(R.id.hereName);
@@ -253,8 +229,9 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     public void markButtonClicked(View view) {
         Log.i("info", "MarkButtonClicked");
-        //PlayaPoint updatedThere = new PlayaPoint(pps.getHere().lat, pps.getHere().lon, 0.0, "markClick");
-        //pps.setThere(updatedThere);
+        pps.thereUpdate(pps.hereLat, pps.hereLon, pps.hereAcc, pps.hereLabel);
+        Log.i("info", "markButtonClicked: here location copied to destination");
+        ppsStateDisplay();
+        Log.i("info", "markButtonClicked: ppsStateDisplay called");
     }
 }
-

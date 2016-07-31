@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.hoppercodes.PlayaCompass;
+package com.hoppercodes.playacompass;
 
 public final class R {
     public static final class attr {
@@ -19,34 +19,30 @@ public final class R {
         public static final int pc512=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f080018;
-        public static final int choice=0x7f080001;
-        public static final int chooseRadio=0x7f080003;
-        public static final int fineAccuracy=0x7f080002;
-        public static final int gpsAcc=0x7f08000a;
-        public static final int gpsLat=0x7f080008;
-        public static final int gpsLon=0x7f080009;
-        public static final int gpsUpdateTime=0x7f080007;
-        public static final int gsLatLon=0x7f08000c;
-        public static final int gsName=0x7f08000b;
-        public static final int hereAddress=0x7f080010;
-        public static final int hereLatLon=0x7f08000e;
-        public static final int hereName=0x7f08000d;
-        public static final int heremcadmdf=0x7f08000f;
-        public static final int lat=0x7f080005;
-        public static final int lon=0x7f080006;
-        public static final int navCompassBearingDist=0x7f080017;
-        public static final int navTNBearingDist=0x7f080016;
-        public static final int navigation=0x7f080015;
-        public static final int prov=0x7f080004;
-        public static final int textView=0x7f080000;
-        public static final int thereAddress=0x7f080014;
-        public static final int thereLatLon=0x7f080012;
-        public static final int thereName=0x7f080011;
-        public static final int theremcadmdf=0x7f080013;
+        public static final int action_settings=0x7f080014;
+        public static final int bearingDeg=0x7f08000d;
+        public static final int bearingDistFeet=0x7f08000c;
+        public static final int bearingLabel=0x7f08000f;
+        public static final int bearingName=0x7f08000b;
+        public static final int bearingRose=0x7f08000e;
+        public static final int gsLatLon=0x7f080002;
+        public static final int gsName=0x7f080001;
+        public static final int headingDeg=0x7f080011;
+        public static final int headingLabel=0x7f080013;
+        public static final int headingName=0x7f080010;
+        public static final int headingRose=0x7f080012;
+        public static final int hereLatLon=0x7f080004;
+        public static final int hereMcadMdf=0x7f080005;
+        public static final int hereName=0x7f080003;
+        public static final int hereStreet=0x7f080006;
+        public static final int markLocationButton=0x7f080000;
+        public static final int thereLatLon=0x7f080008;
+        public static final int thereMcadMdf=0x7f080009;
+        public static final int thereName=0x7f080007;
+        public static final int thereStreet=0x7f08000a;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
+        public static final int pps_state=0x7f030000;
     }
     public static final class menu {
         public static final int main=0x7f070000;
@@ -54,9 +50,7 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f060000;
         public static final int app_name=0x7f060001;
-        public static final int do_you_want_a_fine_accuracy_or_not=0x7f060002;
-        public static final int hello_world=0x7f060003;
-        public static final int textview=0x7f060004;
+        public static final int textview=0x7f060002;
     }
     public static final class style {
         /**  API 11 theme customizations can go here. 
