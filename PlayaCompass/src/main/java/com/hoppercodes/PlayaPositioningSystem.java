@@ -4,7 +4,7 @@ import android.hardware.GeomagneticField;
 
 public final class PlayaPositioningSystem {
     // these values represent the "public interface" of Playa Positioning System
-    // man location: iniitalizes PlayaMan
+    // man location: inititalizes PlayaMan
     public static double manLat;
     public static double manLon;
     public static double manNorthAngle;
@@ -109,7 +109,7 @@ public final class PlayaPositioningSystem {
     }
 
     public void headingUpdate(double azimuth) {
-        PlayaHeading heading = new PlayaHeading(azimuth);
+        this.heading = new PlayaHeading(azimuth);
         this.headingDegMag = heading.headingM;
         this.headingDegNorth = heading.headingN;
         this.headingRose = heading.roseHeading;
@@ -118,7 +118,7 @@ public final class PlayaPositioningSystem {
     }
 
     public void hereUpdate(double lat, double lon, double acc, String label) {
-        PlayaPoint here = new PlayaPoint(lat, lon, acc, label);
+        this.here = new PlayaPoint(lat, lon, acc, label);
         this.hereLat = here.lat;
         this.hereLon = here.lon;
         this.hereAcc = here.precision;
@@ -128,12 +128,12 @@ public final class PlayaPositioningSystem {
         this.hereDistFeet = here.mdf;
         this.hereStreet = here.address;
         // change in present location changes navigation
-        PlayaNavigate h2t = new PlayaNavigate();
+        this.nav = new PlayaNavigate();
         this.navUpdate();
     }
 
     public void thereUpdate(double lat, double lon, double acc, String label) {
-        PlayaPoint there = new PlayaPoint(lat, lon, acc, label);
+        this.there = new PlayaPoint(lat, lon, acc, label);
         this.thereLat = there.lat;
         this.thereLon = there.lon;
         this.thereAcc = there.precision;
@@ -143,7 +143,7 @@ public final class PlayaPositioningSystem {
         this.thereDistFeet = there.mdf;
         this.thereStreet = there.address;
         // change in destination changes navigation
-        PlayaNavigate nav = new PlayaNavigate();
+        this.nav = new PlayaNavigate();
         this.navUpdate();
     }
 
