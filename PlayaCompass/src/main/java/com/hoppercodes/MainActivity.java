@@ -180,7 +180,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     void ppsStateDisplay() {
 
         setContentView(R.layout.pps_state);
-         markLocationButton = (Button) findViewById(R.id.markLocationButton);
+        markLocationButton = (Button) findViewById(R.id.markLocationButton);
         tvGSName = (TextView) findViewById(R.id.gsName);
         tvGSLatLon = (TextView) findViewById(R.id.gsLatLon);
         tvHereName = (TextView) findViewById(R.id.hereName);

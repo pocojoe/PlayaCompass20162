@@ -42,11 +42,11 @@ public final class PlayaPositioningSystem {
     public static String headingRose;
     public static String headingLabel;
 
-    PlayaMan gs;
-    PlayaHeading heading;
-    PlayaPoint here;
-    PlayaPoint there;
-    PlayaNavigate nav;  // nav: here to there
+    static PlayaMan gs;
+    static PlayaHeading heading;
+    static PlayaPoint here;
+    static PlayaPoint there;
+    static PlayaNavigate nav;  // nav: here to there
 
     static {
         // TODO: 7/30/2016  initialize from configuration values
@@ -92,19 +92,20 @@ public final class PlayaPositioningSystem {
     }
 
     PlayaPositioningSystem() {      // constructor for PlayaPositioningSystem
-        PlayaMan gs = new PlayaMan(this.manLat, this.manLon, this.manNorthAngle, this.manLabel);
-        PlayaHeading heading = new PlayaHeading(this.headingDegMag);
-        PlayaPoint here = new PlayaPoint(this.hereLat, this.hereLon, this.hereAcc, this.hereLabel);
-        PlayaPoint there = new PlayaPoint(this.thereLat, this.thereLon, this.thereAcc, this.thereLabel);
-        PlayaNavigate nav = new PlayaNavigate();
+        //PlayaMan gs = new PlayaMan(this.manLat, this.manLon, this.manNorthAngle, this.manLabel);
+        this.gs = new PlayaMan(this.manLat, this.manLon, this.manNorthAngle, this.manLabel);
+        this.heading = new PlayaHeading(this.headingDegMag);
+        this.here = new PlayaPoint(this.hereLat, this.hereLon, this.hereAcc, this.hereLabel);
+        this.there = new PlayaPoint(this.thereLat, this.thereLon, this.thereAcc, this.thereLabel);
+        this.nav = new PlayaNavigate();
     }
 
     public void update() {
-        PlayaMan gs = new PlayaMan(this.manLat, this.manLon, this.manNorthAngle, this.manLabel);
-        PlayaHeading heading = new PlayaHeading(this.headingDegMag);
-        PlayaPoint here = new PlayaPoint(this.hereLat, this.hereLon, this.hereAcc, this.hereLabel);
-        PlayaPoint there = new PlayaPoint(this.thereLat, this.thereLon, this.thereAcc, this.thereLabel);
-        PlayaNavigate nav = new PlayaNavigate();
+        this.gs = new PlayaMan(this.manLat, this.manLon, this.manNorthAngle, this.manLabel);
+        this.heading = new PlayaHeading(this.headingDegMag);
+        this.here = new PlayaPoint(this.hereLat, this.hereLon, this.hereAcc, this.hereLabel);
+        this.there = new PlayaPoint(this.thereLat, this.thereLon, this.thereAcc, this.thereLabel);
+        this.nav = new PlayaNavigate();
     }
 
     public void headingUpdate(double azimuth) {
