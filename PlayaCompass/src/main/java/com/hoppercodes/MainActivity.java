@@ -30,35 +30,12 @@ import android.util.Log;
 import com.hoppercodes.playacompass.R;
 
 public class MainActivity extends Activity implements SensorEventListener {
-    TextView tvGSName;
-    TextView tvGSLatLon;
-    TextView tvHereName;
-    TextView tvHereLatLon;
-    TextView tvHereMcadMdf;
-    TextView tvHereStreet;
-    TextView tvThereName;
-    TextView tvThereLatLon;
-    TextView tvThereMcadMdf;
-    TextView tvThereStreet;
-    TextView tvBearingName;
-    TextView tvBearingDistFeet;
-    TextView tvBearingDeg;
-    TextView tvBearingRose;
-    TextView tvBearingLabel;
-    TextView tvHeadingName;
-    TextView tvHeadingDeg;
-    TextView tvHeadingRose;
-    TextView tvHeadingLabel;
-    Button   markLocationButton;
-
-
     private LocationManager ppsLocationManager;
     private SensorManager ppsSensorManager;
     private Sensor ppsAccelerometer;
     private Sensor ppsMagnetometer;
     private String ppsProvider;
     private PPSLocationListener ppsListener;
-
 
     public PlayaPositioningSystem pps = new PlayaPositioningSystem();
 
@@ -73,7 +50,6 @@ public class MainActivity extends Activity implements SensorEventListener {
     // http://www.ymc.ch/en/smooth-true-north-compass-values  nice discussion of smoothing.
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        markLocationButton = (Button) findViewById(R.id.markLocationButton);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pps_state);
@@ -177,9 +153,33 @@ public class MainActivity extends Activity implements SensorEventListener {
         }
     }
 
-    void ppsStateDisplay() {
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // everything above here belongs in PlayaPositioningSystem
 
+    void ppsStateDisplay() {
         setContentView(R.layout.pps_state);
+
+        TextView tvGSName;
+        TextView tvGSLatLon;
+        TextView tvHereName;
+        TextView tvHereLatLon;
+        TextView tvHereMcadMdf;
+        TextView tvHereStreet;
+        TextView tvThereName;
+        TextView tvThereLatLon;
+        TextView tvThereMcadMdf;
+        TextView tvThereStreet;
+        TextView tvBearingName;
+        TextView tvBearingDistFeet;
+        TextView tvBearingDeg;
+        TextView tvBearingRose;
+        TextView tvBearingLabel;
+        TextView tvHeadingName;
+        TextView tvHeadingDeg;
+        TextView tvHeadingRose;
+        TextView tvHeadingLabel;
+        Button   markLocationButton;
+
         markLocationButton = (Button) findViewById(R.id.markLocationButton);
         tvGSName = (TextView) findViewById(R.id.gsName);
         tvGSLatLon = (TextView) findViewById(R.id.gsLatLon);
