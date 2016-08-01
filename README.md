@@ -1,0 +1,2 @@
+# PlayaCompass20162
+This repository chronicles the development of a class called PlayaPositioningSystem, a gps and magnetic field sensor directed activity that transforms the gps latitude and longitude into coordinates used at Burning Man, where the radial distance from the man is reported in feet, and the angle from the man is reported in clock hours and minutes.   Additional functionality allows navigation and reporting of heading and bearing. 
