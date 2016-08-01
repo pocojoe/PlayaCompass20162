@@ -216,7 +216,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         tvThereStreet.setText(String.valueOf(pps.thereStreet));
         // navigation route
         tvBearingName.setText("*** Navigation");
-        tvBearingDistFeet.setText("Distance:" + pps.bearingDistFeet);
+        tvBearingDistFeet.setText("Distance:" + String.format("%6.0f",pps.bearingDistFeet));
         tvBearingDeg.setText("Mag:" + String.format("%05.1f", pps.bearingDegMag) + " North:" + String.format("%05.1f", pps.bearingDegNorth));
         tvBearingRose.setText(String.valueOf(pps.bearingRose));
         tvBearingLabel.setText(String.valueOf(pps.bearingLabel));
