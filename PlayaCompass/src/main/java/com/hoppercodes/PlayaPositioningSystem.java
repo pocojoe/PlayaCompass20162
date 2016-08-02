@@ -50,7 +50,7 @@ public final class PlayaPositioningSystem {
 
     static {
         // TODO: 7/30/2016  initialize from configuration values
-        // TODO: 7/30/2016  MainActivity writes to these, and then does "update" to push from here into classes
+        // TODO: 7/30/2016  ActivityMain writes to these, and then does "update" to push from here into classes
         // TODO: 7/30/2016 Main activity reads from these when data is requested
         manLat = 40.7864;
         manLon = -119.2065;
@@ -158,13 +158,11 @@ public final class PlayaPositioningSystem {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //////  HEADING  - does electronic compass averaging
+    private static int rSize = 8;        // number of samples stored in the ring buffer.  8 is pretty good at calming things down
     private static int rbi = 0;      // ring buffer index
-    private static int rSize = 16;     // size of ring buffer
     private static int rDiv = 0;        // ring divisor; builds to ring size with repeated calls
     private static double azValSin[] = new double[rSize];
     private static double azValCos[] = new double[rSize];
-    private static double oldSin = 0f;
-    private static double oldCos = 0f;
     private static double sumSin = 0f;
     private static double sumCos = 0f;
 
@@ -308,10 +306,11 @@ public final class PlayaPositioningSystem {
             }
         }
 
-        double AverageAzimuth(double azInDegrees)     // compute the average of N compass readings and give the rolling average
+        double AverageAzimuth(double azInDegrees)     // compute the average of rSize (see below) compass readings and give the rolling average
         {
-            int rSize = 16;           // number of samples in running average
             double azInRadians;      //angle in radians
+            double oldSin = 0f;
+            double oldCos = 0f;
             double newSin = 0f;
             double newCos = 0f;
             double mSin = 0f;

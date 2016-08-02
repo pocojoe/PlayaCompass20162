@@ -29,7 +29,7 @@ import android.util.Log;
 
 import com.hoppercodes.playacompass.R;
 
-public class MainActivity extends Activity implements SensorEventListener {
+public class ActivityMain extends Activity implements SensorEventListener {
     private LocationManager ppsLocationManager;
     private SensorManager ppsSensorManager;
     private Sensor ppsAccelerometer;
@@ -126,7 +126,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         @Override
         public void onLocationChanged(Location location) {
             // TODO: 7/30/2016
-            Toast.makeText(MainActivity.this, "GPS Update",
+            Toast.makeText(ActivityMain.this, "GPS Update",
                     Toast.LENGTH_SHORT).show();
             pps.hereUpdate(location.getLatitude(), location.getLongitude(), location.getAccuracy(), location.getProvider());
             Log.i("info", "PPSLocationListener gps update to pps");
@@ -136,19 +136,19 @@ public class MainActivity extends Activity implements SensorEventListener {
 
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
-            Toast.makeText(MainActivity.this, provider + "'s status changed to " + status,
+            Toast.makeText(ActivityMain.this, provider + "'s status changed to " + status,
                     Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onProviderEnabled(String provider) {
-            Toast.makeText(MainActivity.this, "Provider " + provider + " enabled",
+            Toast.makeText(ActivityMain.this, "Provider " + provider + " enabled",
                     Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onProviderDisabled(String provider) {
-            Toast.makeText(MainActivity.this, "Provider " + provider + " disabled!",
+            Toast.makeText(ActivityMain.this, "Provider " + provider + " disabled!",
                     Toast.LENGTH_SHORT).show();
         }
     }

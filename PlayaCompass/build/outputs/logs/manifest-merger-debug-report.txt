@@ -39,7 +39,7 @@ ADDED from C:\proj\PlayaCompass20162\PlayaCompass\src\main\AndroidManifest.xml:1
 		ADDED from C:\proj\PlayaCompass20162\PlayaCompass\src\main\AndroidManifest.xml:15:9-45
 	android:theme
 		ADDED from C:\proj\PlayaCompass20162\PlayaCompass\src\main\AndroidManifest.xml:17:9-40
-activity#com.hoppercodes.MainActivity
+activity#com.hoppercodes.ActivityMain
 ADDED from C:\proj\PlayaCompass20162\PlayaCompass\src\main\AndroidManifest.xml:18:9-25:20
 	android:label
 		ADDED from C:\proj\PlayaCompass20162\PlayaCompass\src\main\AndroidManifest.xml:20:13-45
