@@ -18,7 +18,7 @@ public final class PlayaPositioningSystem {
     public static double hereAcc;
     public static String hereLabel;
     public static int hereHour;
-    public static int hereMin;
+    public static int hereMinute;
     public static double hereDistFeet;
     public static String hereStreet;
     // destination location description:  Initializes point There
@@ -27,7 +27,7 @@ public final class PlayaPositioningSystem {
     public static double thereAcc;
     public static String thereLabel;
     public static int thereHour;
-    public static int thereMin;
+    public static int thereMinute;
     public static double thereDistFeet;
     public static String thereStreet;
     // bearing:  navigation direction and distance from present location (here) to destination (there)
@@ -65,7 +65,7 @@ public final class PlayaPositioningSystem {
         hereAcc = 10.0;
         hereLabel = "GS 2016";
         hereHour = 12;
-        hereMin = 0;
+        hereMinute = 0;
         hereDistFeet = 0;
         hereStreet = "Street";
 
@@ -74,7 +74,7 @@ public final class PlayaPositioningSystem {
         thereAcc = 10.0;
         thereLabel = "GS 2016";
         thereHour = 12;
-        thereMin = 0;
+        thereMinute = 0;
         thereDistFeet = 0;
         thereStreet = "Street";
 
@@ -124,7 +124,7 @@ public final class PlayaPositioningSystem {
         this.hereAcc = here.precision;
         this.hereLabel = here.name;
         this.hereHour = here.mcah;
-        this.hereMin = here.mcam;
+        this.hereMinute = here.mcam;
         this.hereDistFeet = here.mdf;
         this.hereStreet = here.address;
         // change in present location changes navigation
@@ -139,7 +139,7 @@ public final class PlayaPositioningSystem {
         this.thereAcc = there.precision;
         this.thereLabel = there.name;
         this.thereHour = there.mcah;
-        this.thereMin = there.mcam;
+        this.thereMinute = there.mcam;
         this.thereDistFeet = there.mdf;
         this.thereStreet = there.address;
         // change in destination changes navigation
