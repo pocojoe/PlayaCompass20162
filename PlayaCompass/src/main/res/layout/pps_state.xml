@@ -2,70 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:clickable="true">
+    android:clickable="true"
+    android:orientation="vertical">
 
     <Button
-        android:id="@+id/markLocationButton"
+        android:id="@+id/buttonMarkLocation"
+        android:onClick="btnMarkLocationClicked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:enabled="true"
-        android:onClick="markButtonClicked"
-        android:text="Mark Location"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:focusable="false"
-        android:longClickable="false" />
+        android:longClickable="false"
+        android:text="@string/btnLabelMarkLocation" />
 
     <TextView
         android:id="@+id/gsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/markLocationButton"
-        android:text="gsName"
+        android:text="@string/gsName"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/gsLatLon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/gsName"
-        android:text="gsLatLon"
+        android:text="@string/gsLatLon"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/hereName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/gsLatLon"
-        android:text="hereName"
+        android:text="@string/hereName"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/hereLatLon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/hereName"
-        android:text="hereLatLon"
+        android:text="@string/hereLatLon"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/hereMcadMdf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/hereLatLon"
-        android:text="hereMcadMdf"
+        android:text="@string/hereMcadMdf"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
@@ -73,70 +56,49 @@
         android:id="@+id/hereStreet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/hereMcadMdf"
-        android:text="hereStreet"
+        android:text="@string/hereStreet"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/thereName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/hereStreet"
-        android:text="thereName"
+        android:text="@string/thereName"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/thereLatLon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/thereName"
-        android:text="thereLatLon"
+        android:text="@string/thereLatLon"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/thereMcadMdf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/thereLatLon"
-        android:text="thereMcadMdf"
+        android:text="@string/thereMcadMdf"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/thereStreet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/thereMcadMdf"
-        android:text="thereStreet"
+        android:text="@string/thereStreet"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/bearingName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/thereStreet"
-        android:text="bearingName"
+        android:text="@string/bearingName"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/bearingDistFeet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/bearingName"
-        android:text="bearingDistFeet"
+        android:text="@string/bearingDistFeet"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
@@ -144,70 +106,49 @@
         android:id="@+id/bearingDeg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/bearingDistFeet"
-        android:text="bearingDeg"
+        android:text="@string/bearingDeg"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/bearingRose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/bearingDeg"
-        android:text="bearingRose"
+        android:text="@string/bearingRose"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/bearingLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/bearingRose"
-        android:text="bearingLabel"
+        android:text="@string/bearingLabel"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/headingName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/bearingLabel"
-        android:text="headingName"
+        android:text="@string/headingName"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/headingDeg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/headingName"
-        android:text="headingDeg"
+        android:text="@string/headingDeg"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/headingRose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/headingDeg"
-        android:text="headingRose"
+        android:text="@string/headingRose"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/headingLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/headingRose"
-        android:text="headingLabel"
+        android:text="@string/headingLabel"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 

@@ -4,7 +4,34 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <string name="action_settings">Settings</string>
     <string name="app_name">PlayaCompass</string>
+    <string name="bearingDeg">empty bearingDeg</string>
+    <string name="bearingDistFeet">empty bearingDistFeet</string>
+    <string name="bearingLabel">empty bearingLabel</string>
+    <string name="bearingName">empty bearingName</string>
+    <string name="bearingRose">empty bearingRose</string>
+    <string name="btnLabelMarkLocation">Tap to Mark Location</string>
+    <string name="gsLatLon">empty gsLatLon</string>
+    <string name="gsName">empty gsName</string>
+    <string name="headingDeg">empty headingDeg</string>
+    <string name="headingLabel">empty headingLabel</string>
+    <string name="headingName">empty headingName</string>
+    <string name="headingRose">empty headingRose</string>
+    <string name="hereLatLon">empty hereLatLon</string>
+    <string name="hereMcadMdf">empty hereMcadMdf</string>
+    <string name="hereName">empty hereName</string>
+    <string name="hereStreet">empty hereStreet</string>
+    <string name="manDeclination">9.94</string>
+    <string name="manFPDLat">364336.0</string>
+    <string name="manFPDLon">276923.0</string>
+    <string name="manLabel">GS2016</string>
+    <string name="manLat">40.7864</string>
+    <string name="manLon">-119.2065</string>
+    <string name="manNorthAngle">315.0</string>
     <string name="textview">TextView</string>
+    <string name="thereLatLon">empty thereLatLon</string>
+    <string name="thereMcadMdf">empty thereMcadMdf</string>
+    <string name="thereName">empty thereName</string>
+    <string name="thereStreet">empty thereStreet</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in

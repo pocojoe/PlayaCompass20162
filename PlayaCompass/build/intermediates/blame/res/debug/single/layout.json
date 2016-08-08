@@ -1,6 +1,10 @@
 [
     {
-        "merged": "C:\\proj\\PlayaCompass20162\\PlayaCompass\\build\\intermediates\\res\\merged\\debug\\layout\\pps_state.xml",
-        "source": "C:\\proj\\PlayaCompass20162\\PlayaCompass\\src\\main\\res\\layout\\pps_state.xml"
+        "merged": "/Users/jmiller/Documents/code/PlayaCompass20162/PlayaCompass/build/intermediates/res/merged/debug/layout/pps_state.xml",
+        "source": "/Users/jmiller/Documents/code/PlayaCompass20162/PlayaCompass/src/main/res/layout/pps_state.xml"
+    },
+    {
+        "merged": "/Users/jmiller/Documents/code/PlayaCompass20162/PlayaCompass/build/intermediates/res/merged/debug/layout/pds_layout.xml",
+        "source": "/Users/jmiller/Documents/code/PlayaCompass20162/PlayaCompass/src/main/res/layout/pds_layout.xml"
     }
 ]

@@ -21,14 +21,12 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
+
 
 import com.hoppercodes.playacompass.R;
 
@@ -41,6 +39,7 @@ public class ActivityMain extends Activity implements SensorEventListener {
     private PPSLocationListener ppsListener;
 
     public PlayaPositioningSystem pps = new PlayaPositioningSystem();
+    public PlayaPositionUI pds = new PlayaPositionUI(this);  // display and UI
 
     // these need to be persistent, when I moved them within onSensorChanged things quit working
     float[] lastAccelerometer = new float[3];
@@ -49,6 +48,7 @@ public class ActivityMain extends Activity implements SensorEventListener {
     boolean lastMagnetometerSet = false;
     float[] mR = new float[9];
     float[] mOrientation = new float[3];
+
     // http://www.techrepublic.com/article/pro-tip-create-your-own-magnetic-compass-using-androids-internal-sensors/
     // http://www.ymc.ch/en/smooth-true-north-compass-values  nice discussion of smoothing.
     @Override
@@ -81,8 +81,6 @@ public class ActivityMain extends Activity implements SensorEventListener {
             // need something here saying be patient, waiting for GPS
         }
         ppsLocationManager.requestLocationUpdates(ppsProvider, 200, 1, ppsListener);
-
-        ppsStateDisplay();
     }
 
     @Override
@@ -105,7 +103,7 @@ public class ActivityMain extends Activity implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-         if (event.sensor == ppsAccelerometer) {
+        if (event.sensor == ppsAccelerometer) {
             System.arraycopy(event.values, 0, lastAccelerometer, 0, event.values.length);
             lastAccelerometerSet = true;
         } else if (event.sensor == ppsMagnetometer) {
@@ -118,8 +116,9 @@ public class ActivityMain extends Activity implements SensorEventListener {
             float azimuthInRadians = mOrientation[0];
             float azimuthInDegrees = (float) (Math.toDegrees(azimuthInRadians) + 360) % 360;
             pps.headingUpdate(azimuthInDegrees);
-            Log.i("info", "onSensorChange azimuth update to pps");
-            ppsStateDisplay();
+            //Log.i("info", "onSensorChange azimuth update to pps");
+            pds.updateHeading();
+            //pds.update();
             Log.i("info", "onSensorChange: ppsStateDisplay called");
         }
     }
@@ -132,13 +131,15 @@ public class ActivityMain extends Activity implements SensorEventListener {
     private class PPSLocationListener implements LocationListener {
         @Override
         public void onLocationChanged(Location location) {
-            // TODO: 7/30/2016
             Toast.makeText(ActivityMain.this, "GPS Update",
                     Toast.LENGTH_SHORT).show();
             pps.hereUpdate(location.getLatitude(), location.getLongitude(), location.getAccuracy(), location.getProvider());
-            Log.i("info", "PPSLocationListener gps update to pps");
-            ppsStateDisplay();
-            Log.i("info", "PPSLocationListener: ppsStateDisplay called");
+            pps.update();
+            pds.updateMan();
+            pds.updateHere();
+            pds.updateBearing();
+            pds.update();
+            Log.i("info", "PPSLocationListener: GPS Update");
         }
 
         @Override
@@ -160,172 +161,91 @@ public class ActivityMain extends Activity implements SensorEventListener {
         }
     }
 
-    
-   /////////////////////////////////////////////////////////////////////////////////////////////////
-   // buffering the state of the machine here:
-   protected void savePreferences(){
-       SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-       SharedPreferences.Editor edit=preferences.edit();
-       //man
-       edit.putFloat("manLat",(float)PlayaPositioningSystem.manLat);
-       edit.putFloat("manLon",(float)PlayaPositioningSystem.manLon);
-       edit.putFloat("manNorthAngle",(float)PlayaPositioningSystem.manNorthAngle);
-       edit.putFloat("manFPDLat",(float)PlayaPositioningSystem.manFPDLat);
-       edit.putFloat("manFPDLon",(float)PlayaPositioningSystem.manFPDLon);
-       edit.putFloat("manDeclination",(float)PlayaPositioningSystem.manDeclination);
-       edit.putString("manLable",PlayaPositioningSystem.manLabel);
-       //here
-       edit.putFloat("hereLat",(float)PlayaPositioningSystem.hereLat);
-       edit.putFloat("hereLon",(float)PlayaPositioningSystem.hereLon);
-       edit.putFloat("hereAcc",(float)PlayaPositioningSystem.hereAcc);
-       edit.putString("hereLabel",PlayaPositioningSystem.hereLabel);
-       edit.putInt("hereHour",PlayaPositioningSystem.hereHour);
-       edit.putInt("hereMinute",PlayaPositioningSystem.hereMinute);
-       edit.putFloat("hereDistFeet",(float)PlayaPositioningSystem.hereDistFeet);
-       edit.putString("hereStreet",PlayaPositioningSystem.hereStreet);
-       //there
-       edit.putFloat("thereLat",(float)PlayaPositioningSystem.thereLat);
-       edit.putFloat("thereLon",(float)PlayaPositioningSystem.thereLon);
-       edit.putFloat("thereAcc",(float)PlayaPositioningSystem.thereAcc);
-       edit.putString("thereLabel",PlayaPositioningSystem.thereLabel);
-       edit.putInt("thereHour",PlayaPositioningSystem.thereHour);
-       edit.putInt("thereMinute",PlayaPositioningSystem.thereMinute);
-       edit.putFloat("thereDistFeet",(float)PlayaPositioningSystem.thereDistFeet);
-       edit.putString("thereStreet",PlayaPositioningSystem.thereStreet);
-       //bearing
-       edit.putFloat("bearingDegMag",(float)PlayaPositioningSystem.bearingDegMag);
-       edit.putFloat("bearingDegNorth",(float)PlayaPositioningSystem.bearingDegNorth);
-       edit.putFloat("bearingDistFeet",(float)PlayaPositioningSystem.bearingDistFeet);
-       edit.putString("bearingRose",PlayaPositioningSystem.bearingRose);
-       edit.putString("bearingLabel",PlayaPositioningSystem.bearingLabel);
-       //heading
-       edit.putFloat("headingDegMag",(float)PlayaPositioningSystem.headingDegMag);
-       edit.putFloat("headingDegNorth",(float)PlayaPositioningSystem.headingDegNorth);
-       edit.putString("headingRose",PlayaPositioningSystem.headingRose);
-       edit.putString("headingLabel",PlayaPositioningSystem.headingLabel);
-       // save the edits
-       edit.commit();
-   }
-    protected void getPreferences(){
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    // buffering the state of the machine here:
+    protected void savePreferences() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor edit = preferences.edit();
         //man
-        PlayaPositioningSystem.manLat=preferences.getFloat("manLat",0.0f);
-        PlayaPositioningSystem.manLon=preferences.getFloat("manLon",0.0f);
-        PlayaPositioningSystem.manNorthAngle=preferences.getFloat("manNorthAngle",0.0f);
-        PlayaPositioningSystem.manFPDLat=preferences.getFloat("manFPDLat",0.0f);
-        PlayaPositioningSystem.manFPDLon=preferences.getFloat("manFPDLon",0.0f);
-        PlayaPositioningSystem.manDeclination=preferences.getFloat("manDeclination",0.0f);
-        PlayaPositioningSystem.manLabel=preferences.getString("manLabel","ManDefault");
+        edit.putFloat("manLat", (float) PlayaPositioningSystem.manLat);
+        edit.putFloat("manLon", (float) PlayaPositioningSystem.manLon);
+        edit.putFloat("manNorthAngle", (float) PlayaPositioningSystem.manNorthAngle);
+        edit.putFloat("manFPDLat", (float) PlayaPositioningSystem.manFPDLat);
+        edit.putFloat("manFPDLon", (float) PlayaPositioningSystem.manFPDLon);
+        edit.putFloat("manDeclination", (float) PlayaPositioningSystem.manDeclination);
+        edit.putString("manLable", PlayaPositioningSystem.manLabel);
         //here
-        PlayaPositioningSystem.hereLat=preferences.getFloat("hereLat",0.0f);
-        PlayaPositioningSystem.hereLon=preferences.getFloat("hereLon",0.0f);
-        PlayaPositioningSystem.hereAcc=preferences.getFloat("hereAcc",0.0f);
-        PlayaPositioningSystem.hereLabel=preferences.getString("hereLabel","HereLabelDefault");
-        PlayaPositioningSystem.hereHour=preferences.getInt("hereHour",0);
-        PlayaPositioningSystem.hereMinute=preferences.getInt("hereMinute",0);
-        PlayaPositioningSystem.hereDistFeet=preferences.getFloat("hereDistFeet",0.0f);
-        PlayaPositioningSystem.hereStreet=preferences.getString("hereStreet","HereStreetDefault");
+        edit.putFloat("hereLat", (float) PlayaPositioningSystem.hereLat);
+        edit.putFloat("hereLon", (float) PlayaPositioningSystem.hereLon);
+        edit.putFloat("hereAcc", (float) PlayaPositioningSystem.hereAcc);
+        edit.putString("hereLabel", PlayaPositioningSystem.hereLabel);
+        edit.putInt("hereHour", PlayaPositioningSystem.hereHour);
+        edit.putInt("hereMinute", PlayaPositioningSystem.hereMinute);
+        edit.putFloat("hereDistFeet", (float) PlayaPositioningSystem.hereDistFeet);
+        edit.putString("hereStreet", PlayaPositioningSystem.hereStreet);
         //there
-        PlayaPositioningSystem.thereLat=preferences.getFloat("thereLat",0.0f);
-        PlayaPositioningSystem.thereLon=preferences.getFloat("thereLon",0.0f);
-        PlayaPositioningSystem.thereAcc=preferences.getFloat("thereAcc",0.0f);
-        PlayaPositioningSystem.thereLabel=preferences.getString("thereLabel","ThereLabelDefault");
-        PlayaPositioningSystem.thereHour=preferences.getInt("thereHour",0);
-        PlayaPositioningSystem.thereMinute=preferences.getInt("thereMinute",0);
-        PlayaPositioningSystem.thereDistFeet=preferences.getFloat("thereDistFeet",0.0f);
-        PlayaPositioningSystem.thereStreet=preferences.getString("thereStreet","ThereStreetDefault");
+        edit.putFloat("thereLat", (float) PlayaPositioningSystem.thereLat);
+        edit.putFloat("thereLon", (float) PlayaPositioningSystem.thereLon);
+        edit.putFloat("thereAcc", (float) PlayaPositioningSystem.thereAcc);
+        edit.putString("thereLabel", PlayaPositioningSystem.thereLabel);
+        edit.putInt("thereHour", PlayaPositioningSystem.thereHour);
+        edit.putInt("thereMinute", PlayaPositioningSystem.thereMinute);
+        edit.putFloat("thereDistFeet", (float) PlayaPositioningSystem.thereDistFeet);
+        edit.putString("thereStreet", PlayaPositioningSystem.thereStreet);
         //bearing
-        PlayaPositioningSystem.bearingDegMag=preferences.getFloat("bearingDegMag",0.0f);
-        PlayaPositioningSystem.bearingDegNorth=preferences.getFloat("bearingDegNorth",0.0f);
-        PlayaPositioningSystem.bearingDistFeet=preferences.getFloat("bearingDistFeet",0.0f);
-        PlayaPositioningSystem.bearingRose=preferences.getString("bearingRose","bearingRoseDefault");
-        PlayaPositioningSystem.bearingLabel=preferences.getString("bearingLabel","bearingLabelDefault");
+        edit.putFloat("bearingDegMag", (float) PlayaPositioningSystem.bearingDegMag);
+        edit.putFloat("bearingDegNorth", (float) PlayaPositioningSystem.bearingDegNorth);
+        edit.putFloat("bearingDistFeet", (float) PlayaPositioningSystem.bearingDistFeet);
+        edit.putString("bearingRose", PlayaPositioningSystem.bearingRose);
+        edit.putString("bearingLabel", PlayaPositioningSystem.bearingLabel);
         //heading
-        PlayaPositioningSystem.headingDegMag=preferences.getFloat("headingDegMag",0.0f);
-        PlayaPositioningSystem.headingDegNorth=preferences.getFloat("headingDegNorth",0.0f);
-        PlayaPositioningSystem.headingRose=preferences.getString("headingRose","headingRoseDefault");
-        PlayaPositioningSystem.headingLabel=preferences.getString("headingLabel","headingLabelDefault");
-    }
-    
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // everything above here belongs in PlayaPositioningSystem
-
-    void ppsStateDisplay() {
-        setContentView(R.layout.pps_state);
-
-        TextView tvGSName;
-        TextView tvGSLatLon;
-        TextView tvHereName;
-        TextView tvHereLatLon;
-        TextView tvHereMcadMdf;
-        TextView tvHereStreet;
-        TextView tvThereName;
-        TextView tvThereLatLon;
-        TextView tvThereMcadMdf;
-        TextView tvThereStreet;
-        TextView tvBearingName;
-        TextView tvBearingDistFeet;
-        TextView tvBearingDeg;
-        TextView tvBearingRose;
-        TextView tvBearingLabel;
-        TextView tvHeadingName;
-        TextView tvHeadingDeg;
-        TextView tvHeadingRose;
-        TextView tvHeadingLabel;
-        Button   markLocationButton;
-
-        markLocationButton = (Button) findViewById(R.id.markLocationButton);
-        tvGSName = (TextView) findViewById(R.id.gsName);
-        tvGSLatLon = (TextView) findViewById(R.id.gsLatLon);
-        tvHereName = (TextView) findViewById(R.id.hereName);
-        tvHereLatLon = (TextView) findViewById(R.id.hereLatLon);
-        tvHereMcadMdf = (TextView) findViewById(R.id.hereMcadMdf);
-        tvHereStreet = (TextView) findViewById(R.id.hereStreet);
-        tvThereName = (TextView) findViewById(R.id.thereName);
-        tvThereLatLon = (TextView) findViewById(R.id.thereLatLon);
-        tvThereMcadMdf = (TextView) findViewById(R.id.thereMcadMdf);
-        tvThereStreet = (TextView) findViewById(R.id.thereStreet);
-        tvBearingName = (TextView) findViewById(R.id.bearingName);
-        tvBearingDeg = (TextView) findViewById(R.id.bearingDeg);
-        tvBearingDistFeet = (TextView) findViewById(R.id.bearingDistFeet);
-        tvBearingRose = (TextView) findViewById(R.id.bearingRose);
-        tvBearingLabel = (TextView) findViewById(R.id.bearingLabel);
-        tvHeadingName = (TextView) findViewById(R.id.headingName);
-        tvHeadingDeg = (TextView) findViewById(R.id.headingDeg);
-        tvHeadingRose = (TextView) findViewById(R.id.headingRose);
-        tvHeadingLabel = (TextView) findViewById(R.id.headingLabel);
-
-        // golden spike, or man location
-        tvGSName.setText("*** Man: " + String.valueOf(pps.manLabel));
-        tvGSLatLon.setText(String.format("%9.4f", pps.manLat) + " " + String.format("%9.4f", pps.manLon) + " " + String.format("%4.1f", pps.manNorthAngle));
-        // here
-        tvHereName.setText("*** Here: " + String.valueOf(pps.hereLabel));
-        tvHereLatLon.setText(String.format("%9.4f", pps.hereLat) + " " + String.format("%9.4f", pps.hereLon));
-        tvHereMcadMdf.setText(String.format("%02d", pps.hereHour) + ":" + String.format("%02d", pps.hereMinute) + " & " + String.format("%4.0f", pps.hereDistFeet));
-        tvHereStreet.setText(String.valueOf(pps.hereStreet));
-        // there
-        tvThereName.setText("*** There: " + String.valueOf(pps.thereLabel));
-        tvThereLatLon.setText(String.format("%9.4f", pps.thereLat) + " " + String.format("%9.4f", pps.thereLon));
-        tvThereMcadMdf.setText(String.format("%02d", pps.thereHour) + ":" + String.format("%02d", pps.thereMinute) + " & " + String.format("%4.0f", pps.thereDistFeet));
-        tvThereStreet.setText(String.valueOf(pps.thereStreet));
-        // navigation route
-        tvBearingName.setText("*** Navigation");
-        tvBearingDistFeet.setText("Distance:" + String.format("%6.0f",pps.bearingDistFeet));
-        tvBearingDeg.setText("Mag:" + String.format("%05.1f", pps.bearingDegMag) + " North:" + String.format("%05.1f", pps.bearingDegNorth));
-        tvBearingRose.setText(String.valueOf(pps.bearingRose));
-        tvBearingLabel.setText(String.valueOf(pps.bearingLabel));
-        // electronic compass  uses ppsAccelerometer and magnetic field sensors
-        tvHeadingName.setText("*** Electronic Compass");
-        tvHeadingDeg.setText("Mag:" + String.format("%05.1f", pps.headingDegMag) + " North:" + String.format("%05.1f", pps.headingDegNorth));
-        tvHeadingRose.setText(String.valueOf(pps.headingRose));
-        tvHeadingLabel.setText(String.valueOf(pps.headingLabel));
+        edit.putFloat("headingDegMag", (float) PlayaPositioningSystem.headingDegMag);
+        edit.putFloat("headingDegNorth", (float) PlayaPositioningSystem.headingDegNorth);
+        edit.putString("headingRose", PlayaPositioningSystem.headingRose);
+        edit.putString("headingLabel", PlayaPositioningSystem.headingLabel);
+        // save the edits
+        edit.commit();
     }
 
-    public void markButtonClicked(View view) {
-        Log.i("info", "MarkButtonClicked");
-        pps.thereUpdate(pps.hereLat, pps.hereLon, pps.hereAcc, pps.hereLabel);
-        Log.i("info", "markButtonClicked: here location copied to destination");
-        ppsStateDisplay();
-        Log.i("info", "markButtonClicked: ppsStateDisplay called");
+    protected void getPreferences() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //man@string/btnLabelMarkLocation
+        PlayaPositioningSystem.manLat = preferences.getFloat("manLat",Float.parseFloat(getApplicationContext().getString(R.string.manLat)));
+        PlayaPositioningSystem.manLon = preferences.getFloat("manLon",Float.parseFloat(getApplicationContext().getString(R.string.manLon)));
+        PlayaPositioningSystem.manNorthAngle = preferences.getFloat("manNorthAngle",Float.parseFloat(getApplicationContext().getString(R.string.manNorthAngle)));
+        PlayaPositioningSystem.manFPDLat = preferences.getFloat("manFPDLat",Float.parseFloat(getApplicationContext().getString(R.string.manFPDLat)));
+        PlayaPositioningSystem.manFPDLon = preferences.getFloat("manFPDLon", Float.parseFloat(getApplicationContext().getString(R.string.manFPDLon)));
+        PlayaPositioningSystem.manDeclination = preferences.getFloat("manDeclination", Float.parseFloat(getApplicationContext().getString(R.string.manDeclination)));
+        PlayaPositioningSystem.manLabel = preferences.getString("manLabel",getApplicationContext().getString(R.string.manLabel));
+        //here
+        PlayaPositioningSystem.hereLat = preferences.getFloat("hereLat", 0.0f);
+        PlayaPositioningSystem.hereLon = preferences.getFloat("hereLon", 0.0f);
+        PlayaPositioningSystem.hereAcc = preferences.getFloat("hereAcc", 0.0f);
+        PlayaPositioningSystem.hereLabel = preferences.getString("hereLabel", "HereLabelDefault");
+        PlayaPositioningSystem.hereHour = preferences.getInt("hereHour", 0);
+        PlayaPositioningSystem.hereMinute = preferences.getInt("hereMinute", 0);
+        PlayaPositioningSystem.hereDistFeet = preferences.getFloat("hereDistFeet", 0.0f);
+        PlayaPositioningSystem.hereStreet = preferences.getString("hereStreet", "HereStreetDefault");
+        //there
+        PlayaPositioningSystem.thereLat = preferences.getFloat("thereLat", 0.0f);
+        PlayaPositioningSystem.thereLon = preferences.getFloat("thereLon", 0.0f);
+        PlayaPositioningSystem.thereAcc = preferences.getFloat("thereAcc", 0.0f);
+        PlayaPositioningSystem.thereLabel = preferences.getString("thereLabel", "ThereLabelDefault");
+        PlayaPositioningSystem.thereHour = preferences.getInt("thereHour", 0);
+        PlayaPositioningSystem.thereMinute = preferences.getInt("thereMinute", 0);
+        PlayaPositioningSystem.thereDistFeet = preferences.getFloat("thereDistFeet", 0.0f);
+        PlayaPositioningSystem.thereStreet = preferences.getString("thereStreet", "ThereStreetDefault");
+        //bearing
+        PlayaPositioningSystem.bearingDegMag = preferences.getFloat("bearingDegMag", 0.0f);
+        PlayaPositioningSystem.bearingDegNorth = preferences.getFloat("bearingDegNorth", 0.0f);
+        PlayaPositioningSystem.bearingDistFeet = preferences.getFloat("bearingDistFeet", 0.0f);
+        PlayaPositioningSystem.bearingRose = preferences.getString("bearingRose", "bearingRoseDefault");
+        PlayaPositioningSystem.bearingLabel = preferences.getString("bearingLabel", "bearingLabelDefault");
+        //heading
+        PlayaPositioningSystem.headingDegMag = preferences.getFloat("headingDegMag", 0.0f);
+        PlayaPositioningSystem.headingDegNorth = preferences.getFloat("headingDegNorth", 0.0f);
+        PlayaPositioningSystem.headingRose = preferences.getString("headingRose", "headingRoseDefault");
+        PlayaPositioningSystem.headingLabel = preferences.getString("headingLabel", "headingLabelDefault");
     }
 }

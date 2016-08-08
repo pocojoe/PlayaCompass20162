@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hoppercods.playacompass.test">
+    package="com.hoppercodes.playacompass.test">
 
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="19" />
 
@@ -9,8 +9,8 @@
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="com.hoppercods.playacompass"
+                     android:targetPackage="com.hoppercodes.playacompass"
                      android:handleProfiling="false"
                      android:functionalTest="false"
-                     android:label="Tests for com.hoppercods.playacompass"/>
+                     android:label="Tests for com.hoppercodes.playacompass"/>
 </manifest>
