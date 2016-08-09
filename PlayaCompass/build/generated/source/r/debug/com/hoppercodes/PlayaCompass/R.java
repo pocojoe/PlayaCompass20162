@@ -19,33 +19,12 @@ public final class R {
         public static final int pc512=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f080016;
-        public static final int bearingDeg=0x7f08000f;
-        public static final int bearingDistFeet=0x7f08000e;
-        public static final int bearingLabel=0x7f080011;
-        public static final int bearingName=0x7f08000d;
-        public static final int bearingRose=0x7f080010;
+        public static final int action_settings=0x7f080002;
         public static final int btnMarkLocation=0x7f080000;
-        public static final int buttonMarkLocation=0x7f080002;
-        public static final int gsLatLon=0x7f080004;
-        public static final int gsName=0x7f080003;
-        public static final int headingDeg=0x7f080013;
-        public static final int headingLabel=0x7f080015;
-        public static final int headingName=0x7f080012;
-        public static final int headingRose=0x7f080014;
-        public static final int hereLatLon=0x7f080006;
-        public static final int hereMcadMdf=0x7f080007;
-        public static final int hereName=0x7f080005;
-        public static final int hereStreet=0x7f080008;
         public static final int pdsDisplay=0x7f080001;
-        public static final int thereLatLon=0x7f08000a;
-        public static final int thereMcadMdf=0x7f08000b;
-        public static final int thereName=0x7f080009;
-        public static final int thereStreet=0x7f08000c;
     }
     public static final class layout {
         public static final int pds_layout=0x7f030000;
-        public static final int pps_state=0x7f030001;
     }
     public static final class menu {
         public static final int main=0x7f070000;

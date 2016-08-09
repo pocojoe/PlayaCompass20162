@@ -24,11 +24,14 @@ import android.preference.PreferenceManager;
 import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import android.util.Log;
 
 
 import com.hoppercodes.playacompass.R;
+
+import java.util.Objects;
 
 public class ActivityMain extends Activity implements SensorEventListener {
     private LocationManager ppsLocationManager;
@@ -48,6 +51,8 @@ public class ActivityMain extends Activity implements SensorEventListener {
     boolean lastMagnetometerSet = false;
     float[] mR = new float[9];
     float[] mOrientation = new float[3];
+    // compass rose static value
+    static String oldRose;
 
     // http://www.techrepublic.com/article/pro-tip-create-your-own-magnetic-compass-using-androids-internal-sensors/
     // http://www.ymc.ch/en/smooth-true-north-compass-values  nice discussion of smoothing.
@@ -55,7 +60,6 @@ public class ActivityMain extends Activity implements SensorEventListener {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pps_state);
         this.getPreferences();
         // TODO: 7/30/2016
         pps.update();       // reinitializes pps
@@ -117,9 +121,12 @@ public class ActivityMain extends Activity implements SensorEventListener {
             float azimuthInDegrees = (float) (Math.toDegrees(azimuthInRadians) + 360) % 360;
             pps.headingUpdate(azimuthInDegrees);
             //Log.i("info", "onSensorChange azimuth update to pps");
-            pds.updateHeading();
-            //pds.update();
-            Log.i("info", "onSensorChange: ppsStateDisplay called");
+            if (! pps.headingRose.equals(oldRose)) {
+                pds.updateHeading();
+                pds.update();
+                Log.i("info", "onSensorChange: ppsStateDisplay called");
+            }
+            oldRose=pps.headingRose;
         }
     }
 

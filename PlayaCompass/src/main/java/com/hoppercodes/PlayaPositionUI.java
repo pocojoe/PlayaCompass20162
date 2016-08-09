@@ -34,6 +34,8 @@ public class PlayaPositionUI {
         //update();
     }
 
+
+
     public void update() {
         activityMain.setContentView(R.layout.pds_layout);
         TextView tvDisplay;
@@ -85,7 +87,7 @@ public class PlayaPositionUI {
         sHeading = sHeading + "\n" + ("Mag:" + String.format("%05.1f", activityMain.pps.headingDegMag) + " North:" + String.format("%05.1f", activityMain.pps.headingDegNorth));
         sHeading = sHeading + "\n" + (String.valueOf(activityMain.pps.headingRose));
         sHeading = sHeading + "\n" + (String.valueOf(activityMain.pps.headingLabel));
-        //Log.i("info", "pdsUpdateHeading"+ sHeading);  // updates constantly....
+        Log.i("info", "pdsUpdateHeading"+ sHeading);  // updates constantly....
     }
 
     private void touch() {
