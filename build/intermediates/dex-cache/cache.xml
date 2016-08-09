@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/jmiller/Documents/code/PlayaCompass20162/PlayaCompass/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="bfc5de6e1184c7da616959325d1fd09cd5a7c6da">
+        <dex dex="/Users/jmiller/Documents/code/PlayaCompass20162/PlayaCompass/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_4a6aeccf18e282036aab0956649e51ab8fcc2fea/classes.dex" />
+    </item>
+    <item
+        jar="/Users/jmiller/Documents/code/PlayaCompass20162/PlayaCompass/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="3b2a6b8e26d7691f14366b3dca0aab75023a9c46">
+        <dex dex="/Users/jmiller/Documents/code/PlayaCompass20162/PlayaCompass/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_abb29856c5d8e308cfeedb772feb7465515d45f7/classes.dex" />
+    </item>
+
+</items>

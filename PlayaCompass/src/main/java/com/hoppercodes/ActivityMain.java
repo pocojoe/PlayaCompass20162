@@ -160,8 +160,6 @@ public class ActivityMain extends Activity implements SensorEventListener {
                     Toast.LENGTH_SHORT).show();
         }
     }
-
-
     /////////////////////////////////////////////////////////////////////////////////////////////////
     // buffering the state of the machine here:
     protected void savePreferences() {

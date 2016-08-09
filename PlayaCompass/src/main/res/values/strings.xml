@@ -12,6 +12,7 @@
     <string name="manFPDLat">364336.0</string>
     <string name="manFPDLon">276923.0</string>
     <string name="manDeclination">9.94</string>
+
     // user interface strings
     <string name="btnLabelMarkLocation">Tap to Mark Location</string>
     <string name="gsName">empty gsName</string>
